@@ -7,7 +7,7 @@ module.exports = {
       resolve: "gatsby-source-sanity",
       options: {
         projectId: "tbo3siwk",
-        dataset: "",
+        dataset: "production",
       },
     },
     "gatsby-plugin-gatsby-cloud",
@@ -23,5 +23,7 @@ module.exports = {
       },
       __key: "images",
     },
+    "gatsby-plugin-typescript",
+    "gatsby-plugin-typegen",
   ],
 };
