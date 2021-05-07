@@ -12,7 +12,10 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "autocomplete-tags",
+    "order-documents",
+    "media"
   ],
   "env": {
     "development": {
