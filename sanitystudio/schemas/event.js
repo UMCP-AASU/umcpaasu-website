@@ -1,7 +1,12 @@
+// Continuing to use the deprecated moment because sanity.io still has it as a dependency anyways
+import moment from "moment"
+
+import { isUniqueAcrossAllDocuments } from "../lib/isUniqueAcrossAllDocuments"
+
 export default {
     name: "event",
-    title: "event",
-    type: "object",
+    title: "Event",
+    type: "document",
     fields: [
         {
             name: "title",
@@ -15,14 +20,41 @@ export default {
             type: "datetime",
         },
         {
+            name: "eventTags",
+            title: "Tags",
+            type: "tags",
+        },
+        {
+            name: "facebookLink",
+            title: "Facebook Event Link",
+            type: "url",
+        },
+        {
             name: "image",
             title: "Event Cover Photo",
             type: "image",
         },
         {
-            name: "tags",
-            title: "Tags",
-            type: "type",
+            // see https://www.sanity.io/docs/block-type
+            name: "description",
+            title: "Event Description",
+            type: "array",
+            of: [{ type: "block" }],
+        },
+        {
+            name: "slug",
+            title: "Slug",
+            type: "slug",
+            hidden: true,
+            options: {
+                source: (doc) =>
+                    doc.datetime
+                        ? `${doc.title}-${moment(doc.datetime).year()}`
+                        : doc.title,
+                slugify: (input) =>
+                    input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+                isUnique: isUniqueAcrossAllDocuments,
+            },
         },
         {
             name: "order",
