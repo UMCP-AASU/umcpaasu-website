@@ -30,7 +30,7 @@
       "path": "./schemas/schema"
     },
     {
-      "name": "part:@sanity/desk-took/structure",
+      "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure.js"
     }
   ]

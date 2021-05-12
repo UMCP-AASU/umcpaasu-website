@@ -5,9 +5,12 @@ export default () =>
     S.list()
         .title("Content")
         .items([
-            S.listItems()
+            S.listItem()
                 .title("Site Settings")
-                .child(S.document().schemaType("siteSettings").documentId()),
+                .child(
+                    S.document()
+                        .schemaType("siteSettings")
+                ),
             S.divider(),
             ...S.documentTypeListItems().filter(
                 (item) => !["siteSettings"].includes(item.getId())
