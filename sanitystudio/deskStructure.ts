@@ -12,6 +12,12 @@ export default () =>
                         .schemaType("siteSettings")
                 ),
             S.divider(),
+            S.listItem().title("Bios by Board Year").child(
+                S.documentTypeList('boardYear')
+                .title('Bios by Board Year')
+                .child(boardYear => S.documentList().title("Bios")
+                .filter("_type == 'bio' && $boardYear == boardYear._ref"))
+            ),
             ...S.documentTypeListItems().filter(
                 (item) => !["siteSettings"].includes(item.getId())
             ),

@@ -18,15 +18,9 @@ export default {
         {
             name: "boardYear",
             title: "Board Year",
-            type: "string",
-            description:
-                "The year the person was on board. For example: 2019-2020",
-            validation: (Rule) =>
-                Rule.required()
-                    .regex(/\d{4}\d{4}/, {
-                        name: "board year"
-                    })
-                    .error("Years should be in the format XXXX-XXXX"),
+            type: "reference",
+            to: [{type: "boardYear"}],
+            validation: Rule => Rule.required(),
         },
         {
             name: "major",
