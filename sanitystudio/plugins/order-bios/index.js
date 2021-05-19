@@ -18,8 +18,8 @@ function icon() {
 }
 
 export default {
-  title: "Order Documents",
-  name: "order-documents",
+  title: "Order Bios",
+  name: "order-bios",
   icon,
   component,
 };

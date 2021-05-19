@@ -11,30 +11,31 @@ import DraggableSection from "./organisms/DraggableSection";
 import TypeSection from "./organisms/TypeSection";
 
 const PAGE_SIZE = 25;
+const BASE_QUERY = `*[!(_id in path("drafts.**")) && _type == 'bio' && boardYear->year == $year]`
 // note: going above 25 can lead to Promises not resolving
 
 class OrderDocuments extends React.Component {
   state = {
     count: 0,
     documents: [],
-    types: [],
-    type: { label: "", value: "" },
+    boardYears: [],
+    year: { label: "", value: "" },
     field: { label: DEFAULT_FIELD_LABEL, value: DEFAULT_FIELD_VALUE },
     fields: [],
   };
 
   componentDidMount() {
-    this.getTypes();
+    this.getBoardYears();
   }
 
   loadMore = async () => {
     const length = this.state.documents.length;
 
     const newDocuments = await client.fetch(
-      `*[!(_id in path("drafts.**")) && _type == $types] | order (${
+      `${BASE_QUERY} | order (${
         this.state.field.value
       } asc, order asc, _updatedAt desc)[${length}...${length + PAGE_SIZE}]`,
-      { types: this.state.type.value }
+      { year: this.state.year.value }
     );
 
     const documents = [...this.state.documents, ...newDocuments];
@@ -44,37 +45,42 @@ class OrderDocuments extends React.Component {
     await setListOrder(newDocuments, this.state.field.value, length);
   };
 
-  getTypes = () => {
-    const types = getDocumentTypeNames();
-    this.setState({ types });
+  getBoardYears = async () => {
+    const boardYears = await client.fetch(
+      `*[_type == 'boardYear'] | order (year desc).year`
+    );
+    this.setState({ boardYears });
   };
 
   getFields = () => {
-    const { type, types } = this.state;
+    const { year, boardYears } = this.state;
 
-    const selectedType = types.find(({ name }) => name === type.value);
+    // const selectedType = boardYears.find(({ name }) => name === type.value);
 
-    const fields = (selectedType ? selectedType.fields : []).map(({ name, title }) => ({
-      value: name,
-      label: title,
-    }));
+    // const fields = (selectedType ? selectedType.fields : []).map(({ name, title }) => ({
+    //   value: name,
+    //   label: title,
+    // }));
+
+    // Unused for our use case
+    const fields = []
 
     this.setState({ fields });
   };
 
   refreshTypes = () => {
-    this.getTypes();
+    this.getBoardYears();
     this.getFields();
   };
 
   refreshDocuments = async () => {
-    const count = await client.fetch(`count(*[!(_id in path("drafts.**")) && _type == $types])`, {
-      types: this.state.type.value,
+    const count = await client.fetch(`count(${BASE_QUERY})`, {
+      year: this.state.year.value,
     });
 
     const documents = await client.fetch(
-      `*[!(_id in path("drafts.**")) && _type == $types] | order (${this.state.field.value} asc, order asc, _updatedAt desc)[0...${PAGE_SIZE}]`,
-      { types: this.state.type.value }
+      `${BASE_QUERY} | order (${this.state.field.value} asc, order asc, _updatedAt desc)[0...${PAGE_SIZE}]`,
+      { year: this.state.year.value }
     );
 
     this.setState({ documents, count });
@@ -92,7 +98,7 @@ class OrderDocuments extends React.Component {
     if (shouldShowWarning) {
       shouldProceed = window.confirm(
         `It looks like you are already storing data for:
- • Type: ${type.label}
+ • Bios
  • Field: ${field.label}
 
 Override existing data? This is a one-time operation and cannot be reversed.`
@@ -102,14 +108,14 @@ Override existing data? This is a one-time operation and cannot be reversed.`
     return shouldProceed;
   };
 
-  handleTypeChange = async ({ value, label }) => {
-    const count = await client.fetch(`count(*[!(_id in path("drafts.**")) && _type == $types])`, {
-      types: value,
+  handleYearChange = async ({ value, label }) => {
+    const count = await client.fetch(`count(${BASE_QUERY})`, {
+      year: value,
     });
 
     const documents = await client.fetch(
-      `*[!(_id in path("drafts.**")) && _type == $types] | order (${this.state.field.value} asc, order asc, _updatedAt desc)[0...${PAGE_SIZE}]`,
-      { types: value }
+      `${BASE_QUERY} | order (${this.state.field.value} asc, order asc, _updatedAt desc)[0...${PAGE_SIZE}]`,
+      { year: value }
     );
 
     const shouldProceed = this.isSafeToProceed(documents, this.state.field, { value, label });
@@ -136,7 +142,7 @@ Override existing data? This is a one-time operation and cannot be reversed.`
         }
       }
 
-      this.setState({ type: { value, label }, documents, count }, () => {
+      this.setState({ year: { value, label }, documents, count }, () => {
         this.getFields();
       });
 
@@ -147,13 +153,13 @@ Override existing data? This is a one-time operation and cannot be reversed.`
   };
 
   handleFieldChange = async ({ value, label }) => {
-    const count = await client.fetch(`count(*[!(_id in path("drafts.**")) && _type == $types])`, {
-      types: this.state.type.value,
+    const count = await client.fetch(`count(${BASE_QUERY})`, {
+      year: this.state.year.value,
     });
 
     const documents = await client.fetch(
-      `*[!(_id in path("drafts.**")) && _type == $types] | order (${value} asc, order asc, _updatedAt desc)[0...${PAGE_SIZE}]`,
-      { types: this.state.type.value }
+      `${BASE_QUERY} | order (${value} asc, order asc, _updatedAt desc)[0...${PAGE_SIZE}]`,
+      { year: this.state.year.value }
     );
 
     const shouldProceed = this.isSafeToProceed(documents, { value, label }, this.state.type);
@@ -194,7 +200,7 @@ Override existing data? This is a one-time operation and cannot be reversed.`
             <div className={styles.innerWrapper}>
               <TypeSection
                 {...this.state}
-                handleTypeChange={this.handleTypeChange}
+                handleTypeChange={this.handleYearChange}
                 handleFieldChange={this.handleFieldChange}
                 refreshTypes={this.refreshTypes}
               />

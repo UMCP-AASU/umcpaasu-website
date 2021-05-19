@@ -10,8 +10,8 @@ class TypeSection extends React.Component {
   render() {
     const {
       documents,
-      type,
-      types,
+      year,
+      boardYears,
       fields,
       handleTypeChange,
       handleFieldChange,
@@ -25,10 +25,9 @@ class TypeSection extends React.Component {
         </div>
       );
     }
-
-    const selectorTypes = types.map(({ name, title }) => ({
-      value: name,
-      label: title,
+    const options = boardYears.map(boardYear => ({
+      value: boardYear,
+      label: boardYear,
     }));
 
     const showFields =
@@ -38,8 +37,8 @@ class TypeSection extends React.Component {
       <>
         <div className={styles.flexSpaceBetween}>
           <div>
-            <h2 className={styles.noTopMargin}>Order Documents</h2>
-            <p>Order your documents via drag-and-drop.</p>
+            <h2 className={styles.noTopMargin}>Order Bios</h2>
+            <p>Order your bios via drag-and-drop.</p>
           </div>
           <div className={styles.flexEnd}>
             {showFields ? (
@@ -74,13 +73,13 @@ class TypeSection extends React.Component {
         <hr />
         <div className={styles.subheading}>
           <p>
-            <strong>Step 1: Choose a Type</strong>
+            <strong>Step 1: Choose a Board Year</strong>
           </p>
           <button className={styles.refreshButton} onClick={refreshTypes}>
             <RefreshIcon title="Refresh Types" />
           </button>
         </div>
-        <Select options={selectorTypes} isSearchable onChange={handleTypeChange} value={type} />
+        <Select options={options} isSearchable onChange={handleTypeChange} value={year} />
       </>
     );
   }
