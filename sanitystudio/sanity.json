@@ -15,7 +15,8 @@
     "@sanity/desk-tool",
     "autocomplete-tags",
     "order-documents",
-    "media"
+    "media",
+    "order-bios"
   ],
   "env": {
     "development": {
