@@ -30,7 +30,7 @@ export default () =>
             // The rest of the
             ...S.documentTypeListItems().filter(
                 (item) =>
-                    !["siteSettings", "boardYear", "media.tag"].includes(
+                    !["siteSettings", "boardYear", "media.tag", "bio"].includes(
                         item.getId()
                     )
             ),
