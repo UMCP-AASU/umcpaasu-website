@@ -20,14 +20,21 @@ export default {
             type: "datetime",
         },
         {
-            name: "eventTags",
-            title: "Tags",
-            type: "tags",
-        },
-        {
             name: "facebookLink",
             title: "Facebook Event Link",
             type: "url",
+        },
+        {
+            name: 'isFeatured',
+            title: 'Featured Event',
+            type: 'boolean',
+            description: "Whether or not to include the event in the featured section.",
+            initialValue: false,
+        },
+        {
+            name: "eventTags",
+            title: "Tags",
+            type: "tags",
         },
         {
             name: "image",
@@ -55,12 +62,6 @@ export default {
                     input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
                 isUnique: isUniqueAcrossAllDocuments,
             },
-        },
-        {
-            name: "order",
-            title: "Order",
-            type: "number",
-            hidden: true,
         },
     ],
 }
