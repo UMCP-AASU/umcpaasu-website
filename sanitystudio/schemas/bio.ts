@@ -35,7 +35,7 @@ export default {
         {
             // see https://www.sanity.io/docs/block-type
             name: "description",
-            title: "Event Description",
+            title: "Description",
             type: "array",
             of: [{ type: "block" }],
         },
