@@ -8,5 +8,15 @@ export default {
             title: 'Site Title',
             type: 'string',
         },
+        {
+            name: 'primaryColor',
+            title: 'Site Primary Color',
+            type: 'colorPicker',
+        },
+        {
+            name: 'secondaryColor',
+            title: 'Site Secondary Color',
+            type: 'colorPicker'
+        }
     ],
 }
