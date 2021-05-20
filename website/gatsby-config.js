@@ -23,14 +23,6 @@ module.exports = {
             },
             __key: "images",
         },
-        {
-            resolve: `gatsby-alias-imports`,
-            options: {
-                aliases: {
-                    root: `/`,
-                },
-            },
-        },
         "gatsby-plugin-typescript",
         "gatsby-plugin-typegen",
         {
