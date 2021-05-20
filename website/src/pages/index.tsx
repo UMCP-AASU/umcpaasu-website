@@ -6,9 +6,9 @@ import SEO from "@components/SEO"
 const IndexPage = () => (
     <>
         <SEO title={"Home"} />
-        <Container>
-            <Button color="primary">Click me</Button>
-        </Container>
+        <div>
+            <Button variant="contained" color="primary">Click me</Button>
+        </div>
     </>
 )
 

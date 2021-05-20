@@ -8,7 +8,6 @@
         "paths": {
             "@components/*": ["src/components/*"]
         },
-        "typeRoots": ["./node_modules/@types"],
         "jsx": "react",
         "strict": true,
         "resolveJsonModule": true,
