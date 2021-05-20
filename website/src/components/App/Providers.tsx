@@ -23,31 +23,34 @@ const Providers = ({ children }: Props) => {
     `)
 
     // A custom theme for this app
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: data.sanitySiteSettings.primaryColor,
-            contrastText: "#ffffff",
+    const theme = createMuiTheme({
+        palette: {
+            primary: {
+                main: data.sanitySiteSettings.primaryColor,
+                contrastText: "#ffffff",
+            },
+            secondary: {
+                main: data.sanitySiteSettings.secondaryColor,
+            },
+            info: {
+                // We'll use this for the color of text
+                main: "#999",
+                dark: "#555",
+            },
+            text: {
+                primary: "#999",
+                secondary: "#555",
+            },
         },
-        secondary: {
-            main: data.sanitySiteSettings.secondaryColor,
+        shape: {
+            borderRadius: 8,
         },
-        info: { // We'll use this for the color of text
-            main: "#999",
-            dark: "#555", 
+        typography: {
+            fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(
+                ","
+            ),
         },
-        text: {
-            primary: "#999",
-            secondary: "#555",
-        }
-    },
-    shape: {
-        borderRadius: 8,
-    },
-    typography: {
-        fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
-    },
-})
+    })
 
     const responsiveTheme = responsiveFontSizes(theme)
 
@@ -66,3 +69,5 @@ const theme = createMuiTheme({
         </ThemeProvider>
     )
 }
+
+export default Providers
