@@ -7,10 +7,17 @@ export default () =>
         .items([
             S.listItem()
                 .title("Site Settings")
-                .child(S.document().schemaType("siteSettings")),
-            S.listItem().title("Board Years").child(
-                S.documentTypeList("boardYear")
-            ),
+                .child(
+                    // Display the editor
+                    S.editor()
+                        .id("siteSettings")
+                        .schemaType("siteSettings")
+                        // Create a document with the ID siteSettings
+                        .documentId("siteSettings")
+                ),
+            S.listItem()
+                .title("Board Years")
+                .child(S.documentTypeList("boardYear")),
             S.divider(),
             // Filtering bios by Board year
             S.listItem()
