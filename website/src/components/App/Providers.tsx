@@ -1,3 +1,10 @@
+/**
+ * Our component that handles globals and provide theme to the entire website.
+ *
+ * Used in wrapRootElement in gatsby-browser.js and gatsby-ssr.js
+ * See: https://www.gatsbyjs.com/docs/browser-apis/
+ */
+
 import React from "react"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
@@ -5,7 +12,6 @@ import {
     createMuiTheme,
     responsiveFontSizes,
     ThemeProvider,
-    CssBaseline,
 } from "@material-ui/core"
 
 type Props = {
@@ -56,7 +62,6 @@ const Providers = ({ children }: Props) => {
 
     return (
         <ThemeProvider theme={responsiveTheme}>
-            <CssBaseline />
             <Helmet>
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link
