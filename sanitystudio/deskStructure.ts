@@ -5,16 +5,14 @@ export default () =>
     S.list()
         .title("Content")
         .items([
-            S.listItem()
-                .title("Site Settings")
-                .child(
-                    // Display the editor
-                    S.editor()
-                        .id("siteSettings")
-                        .schemaType("siteSettings")
-                        // Create a document with the ID siteSettings
-                        .documentId("siteSettings")
-                ),
+            S.listItem().title("Site Settings").child(
+                // Display the editor
+                S.editor()
+                    .id("siteSettings")
+                    .schemaType("siteSettings")
+                    // Create a document with the ID siteSettings
+                    .documentId("siteSettings")
+            ),
             S.listItem()
                 .title("Board Years")
                 .child(S.documentTypeList("boardYear")),
@@ -37,8 +35,13 @@ export default () =>
             // The rest of the
             ...S.documentTypeListItems().filter(
                 (item) =>
-                    !["siteSettings", "boardYear", "media.tag", "bio"].includes(
-                        item.getId()
-                    )
+                    ![
+                        "siteSettings",
+                        "boardYear",
+                        "media.tag",
+                        "bio",
+                        "bioPortableText",
+                        "eventPortableText",
+                    ].includes(item.getId())
             ),
         ])

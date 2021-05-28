@@ -36,8 +36,7 @@ export default {
             // see https://www.sanity.io/docs/block-type
             name: "description",
             title: "Description",
-            type: "array",
-            of: [{ type: "block" }],
+            type: "bioPortableText",
         },
         {
             name: "order",

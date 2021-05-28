@@ -1,7 +1,7 @@
 // Continuing to use the deprecated moment because sanity.io still has it as a dependency anyways
 import moment from "moment"
 
-import { isUniqueAcrossAllDocuments } from "../lib/isUniqueAcrossAllDocuments"
+import { isUniqueAcrossAllDocuments } from "../../lib/isUniqueAcrossAllDocuments"
 
 export default {
     name: "event",
@@ -20,15 +20,23 @@ export default {
             type: "datetime",
         },
         {
+            name: "boardYear",
+            title: "Board Year",
+            type: "reference",
+            to: [{ type: "boardYear" }],
+            validation: (Rule) => Rule.required(),
+        },
+        {
             name: "facebookLink",
             title: "Facebook Event Link",
             type: "url",
         },
         {
-            name: 'isFeatured',
-            title: 'Featured Event',
-            type: 'boolean',
-            description: "Whether or not to include the event in the featured section.",
+            name: "isFeatured",
+            title: "Featured Event",
+            type: "boolean",
+            description:
+                "Whether or not to include the event in the featured section.",
             initialValue: false,
         },
         {
@@ -45,8 +53,7 @@ export default {
             // see https://www.sanity.io/docs/block-type
             name: "description",
             title: "Event Description",
-            type: "array",
-            of: [{ type: "block" }],
+            type: "eventPortableText",
         },
         {
             name: "slug",
