@@ -1,5 +1,6 @@
 // Continuing to use the deprecated moment because sanity.io still has it as a dependency anyways
 import moment from "moment"
+import SlugInput from "sanity-plugin-better-slug"
 
 import { isUniqueAcrossAllDocuments } from "../../lib/isUniqueAcrossAllDocuments"
 
@@ -18,6 +19,24 @@ export default {
             name: "datetime",
             title: "Event Date and Time",
             type: "datetime",
+            validation: (Rule) => Rule.required(),
+        },
+        {
+            name: "slug",
+            title: "Slug",
+            description: "The URL for the event on the website. Click generate once you've filled out the event date.",
+            type: "slug",
+            inputComponent: SlugInput,
+            options: {
+                source: (doc) =>
+                    doc.datetime
+                        ? `${doc.title}-${moment(doc.datetime).year()}`
+                        : doc.title,
+                basePath: 'https://umcpaasu.com',
+                slugify: (input) =>
+                    input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+                isUnique: isUniqueAcrossAllDocuments,
+            },
             validation: (Rule) => Rule.required(),
         },
         {
@@ -56,20 +75,6 @@ export default {
             title: "Event Description",
             type: "eventPortableText",
         },
-        {
-            name: "slug",
-            title: "Slug",
-            type: "slug",
-            hidden: true,
-            options: {
-                source: (doc) =>
-                    doc.datetime
-                        ? `${doc.title}-${moment(doc.datetime).year()}`
-                        : doc.title,
-                slugify: (input) =>
-                    input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
-                isUnique: isUniqueAcrossAllDocuments,
-            },
-        },
+
     ],
 }

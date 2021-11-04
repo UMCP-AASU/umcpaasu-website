@@ -16,7 +16,8 @@
     "autocomplete-tags",
     "media",
     "order-bios",
-    "color-picker"
+    "color-picker",
+    "better-slug"
   ],
   "env": {
     "development": {

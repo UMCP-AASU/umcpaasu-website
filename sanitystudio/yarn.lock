@@ -1334,7 +1334,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/asset-utils/-/asset-utils-1.2.3.tgz#a90c7895c6506405d64c2363db131923ba1fa6ef"
   integrity sha512-0eOR0D6zcqd6nEmAGIJ93ibRGO6ocYzQ5aEuyYvngHy5MDDjUfC821UnF/YPIcxiMXg2DLDjWd4EPt9F8frKNQ==
 
-"@sanity/base@2.21.9", "@sanity/base@^2.21.9":
+"@sanity/base@2.21.9", "@sanity/base@>= 2.5.0", "@sanity/base@^2.21.9":
   version "2.21.9"
   resolved "https://registry.yarnpkg.com/@sanity/base/-/base-2.21.9.tgz#c036fa21af8999f3951997be70613dfb47e7ecf8"
   integrity sha512-hMTGyYqyRDwyR0zp+qPMmMeNXWIsX2s1KuQLpVWXYjiyw4dBj3qm6ak0+F+LyDpXFyEwZal40OstIxghQeWA+w==
@@ -1933,7 +1933,7 @@
     react "17.0.1"
     rxjs "^6.5.3"
 
-"@sanity/ui@>=0.36.6", "@sanity/ui@^0.36.13":
+"@sanity/ui@>= 0.33.9", "@sanity/ui@>=0.36.6", "@sanity/ui@^0.36.13":
   version "0.36.13"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.36.13.tgz#246575683bea4330e33ab20f49a98746041672e2"
   integrity sha512-GlMreWDh07xWWwiLolkMw/woSJOonx/cSadYjlsaRGGku9ulUfbYn4KLACLern/J3645Zg2FOWHMoKyI7kkM8A==
@@ -1950,7 +1950,7 @@
     react-popper "^2.2.5"
     react-refractor "^2.1.5"
 
-"@sanity/util@2.21.7":
+"@sanity/util@2.21.7", "@sanity/util@>= 2.5.0":
   version "2.21.7"
   resolved "https://registry.yarnpkg.com/@sanity/util/-/util-2.21.7.tgz#4563929160ffabe36450bf5a0f495e5c2e9d9640"
   integrity sha512-pXDNJyCF2MgRhzwgtAQCQfQs4ify+xaZQLJ7HaZv4mn3I7yJ7dWsZeYSiBStTkxZLkLDiwOE5VJV2q01nvp2kw==
@@ -2319,6 +2319,11 @@
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
   integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
+
+"@types/speakingurl@^13.0.2":
+  version "13.0.3"
+  resolved "https://registry.npmjs.org/@types/speakingurl/-/speakingurl-13.0.3.tgz#cbfe3d0182c7af92ebac7e587bb9228472e05133"
+  integrity sha512-nBHZAaNTEw1YG3ROL7HtTp7HjW8HD7DuFYbWoonUKTZHj7eyOt4vPzyMcc3+xgWNv7xi2rziaiBXHIq6wBeyrw==
 
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.3"
@@ -9676,6 +9681,17 @@ sanity-plugin-autocomplete-tags@^1.0.1:
     react-select "^3.1.0"
     webpack "^5.1.0"
 
+sanity-plugin-better-slug@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/sanity-plugin-better-slug/-/sanity-plugin-better-slug-1.0.0.tgz#5fd8511f6fa4f4fed9248d3c8a6462f001d3fdef"
+  integrity sha512-OOgMQv0FtsCbJ1LCpYq+iJfCXlvNxVrqMa1EyzO9X+fI3oqGpBafzB7P9FvSxxtYOxnnVU3dPuwXOUllwi4BQA==
+  dependencies:
+    "@sanity/base" ">= 2.5.0"
+    "@sanity/ui" ">= 0.33.9"
+    "@sanity/util" ">= 2.5.0"
+    "@types/speakingurl" "^13.0.2"
+    speakingurl "^14.0.1"
+
 sanity-plugin-color-picker@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sanity-plugin-color-picker/-/sanity-plugin-color-picker-1.0.3.tgz#1feaa7e3b4b0478d68f882848fb73d3646dacafe"
@@ -10127,6 +10143,11 @@ speakingurl@^13.0.0:
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/speakingurl/-/speakingurl-13.0.0.tgz#266c52d2b47585375af058e4783c8d1097a2d3db"
   integrity sha1-JmxS0rR1hTda8FjkeDyNEJei09s=
+
+speakingurl@^14.0.1:
+  version "14.0.1"
+  resolved "https://registry.npmjs.org/speakingurl/-/speakingurl-14.0.1.tgz#f37ec8ddc4ab98e9600c1c9ec324a8c48d772a53"
+  integrity sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==
 
 speedometer@~1.0.0:
   version "1.0.0"
