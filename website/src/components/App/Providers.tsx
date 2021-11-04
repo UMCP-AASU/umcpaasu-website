@@ -9,10 +9,10 @@ import React from "react"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import {
-    createMuiTheme,
+    createTheme,
     responsiveFontSizes,
     ThemeProvider,
-} from "@material-ui/core"
+} from "@mui/material"
 
 type Props = {
     children: React.ReactNode
@@ -29,7 +29,7 @@ const Providers = ({ children }: Props) => {
     `)
 
     // A custom theme for this app
-    const theme = createMuiTheme({
+    const theme = createTheme({
         palette: {
             primary: {
                 main: data.sanitySiteSettings.primaryColor,
