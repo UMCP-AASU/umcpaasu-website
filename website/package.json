@@ -16,7 +16,9 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.6",
     "@sanity/block-content-to-react": "^3.0.0",
     "gatsby": "^4.1.0",
     "gatsby-plugin-gatsby-cloud": "^4.1.0",
