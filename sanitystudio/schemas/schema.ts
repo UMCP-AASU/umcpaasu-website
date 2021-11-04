@@ -6,6 +6,11 @@ import schemaTypes from "all:part:@sanity/base/schema-type"
 
 // Import the singleton schemas
 import siteSettings from "./singletons/siteSettings"
+import homePage from "./singletons/homePage"
+import aboutPage from "./singletons/aboutPage"
+import eventsPage from "./singletons/eventsPage"
+import boardPage from "./singletons/boardPage"
+import contactPage from "./singletons/contactPage"
 
 // Import the document schemas
 import bio from "./documents/bio"
@@ -23,9 +28,14 @@ export default createSchema({
     // to the ones provided by any plugins that are installed
     types: schemaTypes.concat([
         siteSettings,
+        homePage,
+        aboutPage,
+        eventsPage,
+        boardPage,
+        contactPage,
         bio,
         event,
         boardYear,
-        portableText
+        portableText,
     ]),
 })

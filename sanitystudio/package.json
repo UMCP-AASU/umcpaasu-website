@@ -31,9 +31,9 @@
     "sanity-plugin-better-slug": "^1.0.0",
     "sanity-plugin-color-picker": "^1.0.3",
     "sanity-plugin-media": "^1.4.3",
-    "sanity-plugin-order-documents": "^0.0.20"
+    "sanity-plugin-order-documents": "^0.0.20",
+    "styled-components": "^5.3.3"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git@github.com:UMCP-AASU/umcpaasu-website.git"

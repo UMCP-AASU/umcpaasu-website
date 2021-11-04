@@ -1,22 +1,13 @@
 export default {
-    name: 'siteSettings',
-    title: 'Site Settings',
-    type: 'document',
+    name: "siteSettings",
+    title: "Site Settings",
+    type: "document",
     fields: [
         {
-            name: 'title',
-            title: 'Site Title',
-            type: 'string',
+            name: "title",
+            title: "Site Title",
+            type: "string",
+            validation: (Rule) => Rule.required(),
         },
-        {
-            name: 'primaryColor',
-            title: 'Site Primary Color',
-            type: 'colorPicker',
-        },
-        {
-            name: 'secondaryColor',
-            title: 'Site Secondary Color',
-            type: 'colorPicker'
-        }
     ],
 }
