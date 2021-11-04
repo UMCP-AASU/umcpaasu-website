@@ -1,5 +1,7 @@
+import { HiOutlineLink } from "react-icons/hi";
+
 export default {
-    name: "bioPortableText",
+    name: "portableText",
     type: "array",
     title: "Description",
     of: [
@@ -16,6 +18,8 @@ export default {
           { title: "H2", value: "h2" },
           { title: "H3", value: "h3" },
           { title: "H4", value: "h4" },
+          { title: "H5", value: "h5" },
+          { title: "Subtitle", value: "h6" },
           { title: "Quote", value: "blockquote" },
         ],
         lists: [
@@ -34,17 +38,24 @@ export default {
           // Annotations can be any object structure – e.g. a link or a footnote.
           annotations: [
             {
-              name: "link",
-              type: "object",
-              title: "URL",
-              fields: [
-                {
-                  title: "URL",
-                  name: "href",
-                  type: "url",
-                },
-              ],
-            },
+                name: 'externalLink',
+                type: 'object',
+                title: 'External Link',
+                icon: HiOutlineLink,
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL'
+                  },
+                  {
+                    title: 'Open in new tab',
+                    name: 'blank',
+                    description: 'Read https://css-tricks.com/use-target_blank/',
+                    type: 'boolean'
+                  }
+                ]
+              },
           ],
         },
       },

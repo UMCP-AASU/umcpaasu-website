@@ -73,7 +73,7 @@ export default {
             // see https://www.sanity.io/docs/block-type
             name: "description",
             title: "Event Description",
-            type: "eventPortableText",
+            type: "portableText",
         },
 
     ],
