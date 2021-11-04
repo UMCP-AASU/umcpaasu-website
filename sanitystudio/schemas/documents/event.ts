@@ -18,6 +18,7 @@ export default {
             name: "datetime",
             title: "Event Date and Time",
             type: "datetime",
+            validation: (Rule) => Rule.required(),
         },
         {
             name: "boardYear",
@@ -40,7 +41,7 @@ export default {
             initialValue: false,
         },
         {
-            name: "eventTags",
+            name: "tags",
             title: "Tags",
             type: "tags",
         },
