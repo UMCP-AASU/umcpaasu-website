@@ -21,7 +21,8 @@ export default {
         },
         {
             name: 'aboutTitle',
-            title: 'About Us Blurb Title'
+            title: 'About Us Blurb Title',
+            type: 'string'
         },
         {
             name: 'aboutDescription',

@@ -15,7 +15,7 @@ export default () =>
             ),
             S.divider(),
             S.listItem()
-                .title("Pages")
+                .title("Website Pages")
                 .child(
                     S.list()
                         .title("Pages")
@@ -97,9 +97,8 @@ export default () =>
                         "contactPage",
                         "boardYear",
                         "media.tag",
+                        "event",
                         "bio",
-                        "bioPortableText",
-                        "eventPortableText",
                     ].includes(item.getId())
             ),
         ])

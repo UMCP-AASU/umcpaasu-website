@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "sanity-studio"
+    "name": "UMCP AASU Website"
   },
   "plugins": [
     "@sanity/base",
