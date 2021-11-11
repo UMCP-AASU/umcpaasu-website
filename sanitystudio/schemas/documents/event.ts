@@ -24,7 +24,7 @@ export default {
         {
             name: "slug",
             title: "Slug",
-            description: "The URL for the event on the website. Click generate once you've filled out the event date.",
+            description: "The URL for the event on the website. Click generate once you've filled out the title and event date.",
             type: "slug",
             inputComponent: SlugInput,
             options: {
@@ -50,14 +50,6 @@ export default {
             name: "facebookLink",
             title: "Facebook Event Link",
             type: "url",
-        },
-        {
-            name: "isFeatured",
-            title: "Featured Event",
-            type: "boolean",
-            description:
-                "Whether or not to include the event in the featured section.",
-            initialValue: false,
         },
         {
             name: "tags",
