@@ -8,6 +8,8 @@
 import React from "react"
 import { CssBaseline } from "@mui/material"
 
+import AnimatedHeader from "./Header/AnimatedHeader"
+
 type Props = {
     children: React.ReactNode
 }
@@ -15,6 +17,7 @@ type Props = {
 const Layout = ({ children }: Props) => (
     <>
         <CssBaseline />
+        <AnimatedHeader />
         <main>{children}</main>
     </>
 )

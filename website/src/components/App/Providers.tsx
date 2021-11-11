@@ -32,16 +32,16 @@ const Providers = ({ children }: Props) => {
     const theme = createTheme({
         palette: {
             primary: {
-                main: data.sanitySiteSettings.primaryColor,
+                main: data.sanitySiteSettings?.primaryColor ?? "#822a2a",
                 contrastText: "#ffffff",
             },
             secondary: {
-                main: data.sanitySiteSettings.secondaryColor,
+                main: data.sanitySiteSettings?.secondaryColor ?? "#a1887f",
             },
-            info: {
-                // We'll use this for the color of text
-                main: "#999",
+            neutral: { // Custom color defined in declarations.d.ts
+                main: "#ffffff",
                 dark: "#555",
+                light: "#ffffff",
             },
             text: {
                 primary: "#999",
