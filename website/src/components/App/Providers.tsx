@@ -8,11 +8,10 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import {
-    createTheme,
-    responsiveFontSizes,
-    ThemeProvider,
-} from "@mui/material"
+import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material"
+import { Globals } from "react-spring"
+
+import usePrefersReducedMotion from "@hooks/usePrefersReducedMotion"
 
 type Props = {
     children: React.ReactNode
@@ -27,6 +26,12 @@ const Providers = ({ children }: Props) => {
             }
         }
     `)
+    const prefersReducedMotion = usePrefersReducedMotion()
+    React.useEffect(() => {
+        Globals.assign({
+            skipAnimation: prefersReducedMotion,
+        })
+    }, [prefersReducedMotion])
 
     // A custom theme for this app
     const theme = createTheme({
@@ -38,7 +43,8 @@ const Providers = ({ children }: Props) => {
             secondary: {
                 main: data.sanitySiteSettings?.secondaryColor ?? "#a1887f",
             },
-            neutral: { // Custom color defined in declarations.d.ts
+            neutral: {
+                // Custom color defined in declarations.d.ts
                 main: "#ffffff",
                 dark: "#555",
                 light: "#ffffff",

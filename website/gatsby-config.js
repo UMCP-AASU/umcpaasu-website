@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: "Organization Website",
+        title: "AASU",
     },
     plugins: [
         {

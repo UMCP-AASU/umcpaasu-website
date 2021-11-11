@@ -6,7 +6,8 @@
         "lib": ["dom", "ESNext"],
         "baseUrl": ".",
         "paths": {
-            "@components/*": ["src/components/*"]
+            "@components/*": ["src/components/*"],
+            "@hooks/*": ["src/hooks/*"]
         },
         "typeRoots": ["./node_modules/@types", "./src/declarations"],
         "jsx": "react",

@@ -4,8 +4,8 @@ function Logo() {
     return (
         <svg
             version="1.0"
-            width="900"
-            height="900"
+            width="50"
+            height="50"
             viewBox="0 0 900 900"
             preserveAspectRatio="xMidYMid meet"
             style={{

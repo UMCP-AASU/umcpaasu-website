@@ -1,11 +1,6 @@
 import React from "react"
 import { GatsbyImage, GatsbyImageProps } from "gatsby-plugin-image"
-
-export type SanityImageWithAltText = GatsbyTypes.Maybe<{
-    readonly asset: GatsbyTypes.Maybe<
-        Pick<GatsbyTypes.SanityImageAsset, "gatsbyImageData" | "altText">
-    >
-}>
+import { SanityImageWithAltText } from "./index"
 
 // Defined with GatsbyTypes.Maybe so that we know image and alt are required fields
 // but sometimes the values passed in are undefined
