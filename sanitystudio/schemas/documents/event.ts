@@ -24,17 +24,20 @@ export default {
         {
             name: "slug",
             title: "Slug",
-            description: "The URL for the event on the website. Click generate once you've filled out the title and event date.",
+            description:
+                "The URL for the event on the website. Click generate once you've filled out the title and event date.",
             type: "slug",
             inputComponent: SlugInput,
             options: {
                 source: (doc) =>
-                    doc.datetime
-                        ? `${doc.title}-${moment(doc.datetime).year()}`
-                        : doc.title,
-                basePath: 'https://umcpaasu.com',
+                    `${doc.title}-${moment(doc.datetime).year()}`,
+                basePath: "https://umcpaasu.com",
                 slugify: (input) =>
-                    input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+                    input
+                        .replace(/[^\w\d\s-]/g, "") // remove any character that isn't a word, digit, or whitespace
+                        .replace(/\s+/g, "-")
+                        .toLowerCase()
+                        .slice(0, 200),
                 isUnique: isUniqueAcrossAllDocuments,
             },
             validation: (Rule) => Rule.required(),
@@ -43,6 +46,7 @@ export default {
             name: "boardYear",
             title: "Board Year",
             type: "reference",
+            weak: false,
             to: [{ type: "boardYear" }],
             validation: (Rule) => Rule.required(),
         },
@@ -67,6 +71,5 @@ export default {
             title: "Event Description",
             type: "portableText",
         },
-
     ],
 }
