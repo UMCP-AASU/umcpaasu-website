@@ -3,16 +3,13 @@ import { Typography } from "@mui/material"
 
 // Components
 import Event from "./Event"
-import { 
-    GridWithItems,
-    GridWithItemsProps
-} from "@components/Layout"
+import { GridWithItems, GridWithItemsProps } from "@components/Layout"
 
 type Props = GridWithItemsProps & {
-        events: GatsbyTypes.EventFragment[]
-        showDescription?: boolean
-        showFullDescription?: boolean
-    }
+    events: GatsbyTypes.EventFragment[]
+    showDescription?: boolean
+    showFullDescription?: boolean
+}
 
 /**
  * Component that displays the events in a grid.

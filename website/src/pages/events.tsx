@@ -30,6 +30,9 @@ export const query = graphql`
 `
 
 function EventsPage({ data }: PageProps<GatsbyTypes.EventsPageQuery>) {
+    const allEvents = data.allSanityEvent.nodes
+    const futureEvents = allEvents
+    const pastEvents = allEvents
     return (
         <>
             <SEO title={"Events"} />
@@ -47,8 +50,11 @@ function EventsPage({ data }: PageProps<GatsbyTypes.EventsPageQuery>) {
                 </Container>
             </ParallaxBackground>
             <RaisedPageContent>
-                <Section>
-                    <EventsGrid events={data.allSanityEvent.nodes} />
+                <Section title="Upcoming Events" maxWidth="lg">
+                    <EventsGrid events={futureEvents} />
+                </Section>
+                <Section title="Past Events" maxWidth="lg">
+                    <EventsGrid events={pastEvents} />
                 </Section>
             </RaisedPageContent>
         </>
