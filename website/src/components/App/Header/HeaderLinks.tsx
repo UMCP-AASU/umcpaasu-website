@@ -15,7 +15,7 @@ function HeaderLinks(props: Props) {
     return (
         <>
             <HeaderLink to="/" text="Home" scrollTrigger={scrollTrigger} />
-            {/* <HeaderLink
+            <HeaderLink
                 to="/about"
                 text="About"
                 scrollTrigger={scrollTrigger}
@@ -31,15 +31,10 @@ function HeaderLinks(props: Props) {
                 scrollTrigger={scrollTrigger}
             />
             <HeaderLink
-                to="/archive"
-                text="Archive"
-                scrollTrigger={scrollTrigger}
-            />
-            <HeaderLink
-                to="/contact-us"
+                to="/contact"
                 text="Contact Us"
                 scrollTrigger={scrollTrigger}
-            /> */}
+            />
         </>
     )
 }

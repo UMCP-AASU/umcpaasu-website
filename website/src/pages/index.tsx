@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
-import { Container, Grid, Typography } from "@mui/material"
+import { Container, Typography } from "@mui/material"
 
 import SEO from "@components/SEO"
 import { ParallaxBackground, RaisedPageContent, Section } from "@components/Layout"
