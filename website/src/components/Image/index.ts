@@ -2,6 +2,7 @@ export { default as GatsbyImageIfExists } from "./GatsbyImageIfExist"
 export { default as BackgroundImage } from "./BackgroundImage"
 
 export type { BackgroundImageProps } from "./BackgroundImage"
+export type { GatsbyImageIfExistsProps } from "./GatsbyImageIfExist"
 
 export type SanityImageWithAltText = GatsbyTypes.Maybe<{
     readonly asset: GatsbyTypes.Maybe<

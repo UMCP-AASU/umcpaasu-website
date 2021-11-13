@@ -1,14 +1,15 @@
 import React from "react"
+import { styled } from "@mui/material"
 import { GatsbyImage, GatsbyImageProps } from "gatsby-plugin-image"
 import { SanityImageWithAltText } from "./index"
 
 // Defined with GatsbyTypes.Maybe so that we know image and alt are required fields
 // but sometimes the values passed in are undefined
-type Props = Omit<GatsbyImageProps, "image" | "alt"> & {
+export type GatsbyImageIfExistsProps = Omit<GatsbyImageProps, "image" | "alt"> & {
     imageAsset: SanityImageWithAltText
 }
 
-const GatsbyImageIfExists = ({ imageAsset, ...rest }: Props) => {
+const GatsbyImageIfExists = ({ imageAsset, ...rest }: GatsbyImageIfExistsProps) => {
     if (!imageAsset || !imageAsset?.asset?.gatsbyImageData) {
         return <></>
     }
@@ -23,4 +24,4 @@ const GatsbyImageIfExists = ({ imageAsset, ...rest }: Props) => {
     )
 }
 
-export default GatsbyImageIfExists
+export default styled(GatsbyImageIfExists)({})
