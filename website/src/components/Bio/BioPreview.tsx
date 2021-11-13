@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Typography } from "@mui-ui/material"
+import { Grid, Typography } from "@mui/material"
 
 // Components
 import { SanityContent } from "@components/SanityContent"

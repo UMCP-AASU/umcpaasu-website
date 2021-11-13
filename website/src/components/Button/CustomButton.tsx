@@ -28,7 +28,7 @@ const AnimatedButton = React.forwardRef<
     Props & {
         boopProps: BoopProps
     }
->(({ boopProps, disabled, ...rest }) => {
+>(({ boopProps, disabled, ...rest }, ref) => {
     const [boopStyles, trigger] = useBoop({ ...boopProps, disabled })
 
     return (
@@ -36,6 +36,7 @@ const AnimatedButton = React.forwardRef<
             <AnimatedCustomButton
                 style={boopStyles}
                 disabled={disabled}
+                ref={ref}
                 {...rest}
             />
         </span>

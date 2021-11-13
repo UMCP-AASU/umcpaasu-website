@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { GatsbyImage } from "gatsby-plugin-image"
 import { useSpring, animated as a } from "react-spring"
 import { Box, Grid, Chip, Typography } from "@mui/material"
 
@@ -96,7 +95,7 @@ function FlippableBio({ bio }: Props) {
                                 alignItems="flex-start"
                                 spacing={1}
                             >
-                                {major.map((m: string) => (
+                                {major.map((m) => (
                                     <Grid item key={name + m}>
                                         <Chip label={m} color="primary" />
                                     </Grid>

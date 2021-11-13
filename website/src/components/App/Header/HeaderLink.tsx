@@ -43,7 +43,7 @@ function HeaderLink(props: Props) {
                     : theme.palette.neutral.light,
             }}
             activeStyle={{
-                "& #link-highlight": {
+                "& #linkHighlight": {
                     backgroundColor: (props: Props) =>
                         props.scrollTrigger
                             ? theme.palette.text.secondary

@@ -9,7 +9,7 @@
             "@components/*": ["src/components/*"],
             "@hooks/*": ["src/hooks/*"]
         },
-        "typeRoots": ["./node_modules/@types", "./src/declarations"],
+        "typeRoots": ["./node_modules/@types", "./src/declarations", "./src/__generated__/gatsby-types.ts"],
         "jsx": "react",
         "strict": true,
         "resolveJsonModule": true,

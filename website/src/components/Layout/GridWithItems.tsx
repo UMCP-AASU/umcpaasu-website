@@ -7,7 +7,7 @@ export interface GridWithItemsProps extends GridProps {
 }
 
 type Props = GridWithItemsProps & {
-    children: React.ReactNode[]
+    children: React.ReactNode | React.ReactNode[]
 }
 
 /**

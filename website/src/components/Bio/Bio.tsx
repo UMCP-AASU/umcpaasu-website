@@ -18,7 +18,7 @@ type Props = {
 }
 
 function Bio({ bio }: Props) {
-    const { name, position, major = [], propic, _rawDescription, order } = bio
+    const { name, position, major = [], propic, _rawDescription } = bio
 
     return (
         <Card>

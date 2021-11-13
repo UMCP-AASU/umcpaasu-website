@@ -113,7 +113,7 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                         xs={12}
                         lg={6}
                     >
-                        {presidents.nodes.map((bio) => (
+                        {data.presidents.nodes.map((bio) => (
                             <AnimateOnVisible
                                 once
                                 partialVisibility
