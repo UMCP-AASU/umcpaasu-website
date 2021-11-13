@@ -13,8 +13,6 @@ type Props = {
     bio: GatsbyTypes.BioFragment
 }
 
-const AnimatedImg = a(GatsbyImage)
-
 function FlippableBio({ bio }: Props) {
     const { name, position, major = [], propic, _rawDescription, order } = bio
     const [flipped, setFlipped] = useState(false)
@@ -98,7 +96,7 @@ function FlippableBio({ bio }: Props) {
                                 alignItems="flex-start"
                                 spacing={1}
                             >
-                                {major.map((m) => (
+                                {major.map((m: string) => (
                                     <Grid item key={name + m}>
                                         <Chip label={m} color="primary" />
                                     </Grid>

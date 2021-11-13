@@ -5,11 +5,17 @@ import { SanityImageWithAltText } from "./index"
 
 // Defined with GatsbyTypes.Maybe so that we know image and alt are required fields
 // but sometimes the values passed in are undefined
-export type GatsbyImageIfExistsProps = Omit<GatsbyImageProps, "image" | "alt"> & {
+export type GatsbyImageIfExistsProps = Omit<
+    GatsbyImageProps,
+    "image" | "alt"
+> & {
     imageAsset: SanityImageWithAltText
 }
 
-const GatsbyImageIfExists = ({ imageAsset, ...rest }: GatsbyImageIfExistsProps) => {
+const GatsbyImageIfExists = ({
+    imageAsset,
+    ...rest
+}: GatsbyImageIfExistsProps) => {
     if (!imageAsset || !imageAsset?.asset?.gatsbyImageData) {
         return <></>
     }
@@ -25,3 +31,7 @@ const GatsbyImageIfExists = ({ imageAsset, ...rest }: GatsbyImageIfExistsProps) 
 }
 
 export default styled(GatsbyImageIfExists)({})
+export const RaisedImage = styled(GatsbyImageIfExists)(({ theme }) => ({
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[3],
+}))
