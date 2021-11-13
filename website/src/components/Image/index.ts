@@ -1,5 +1,6 @@
 export { default as GatsbyImageIfExists } from "./GatsbyImageIfExist"
 export { default as BackgroundImage } from "./BackgroundImage"
+export { default as ColoredShadowImage } from "./ColoredShadowImage"
 
 export type { BackgroundImageProps } from "./BackgroundImage"
 export type { GatsbyImageIfExistsProps } from "./GatsbyImageIfExist"

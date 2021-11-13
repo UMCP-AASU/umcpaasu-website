@@ -8,6 +8,9 @@ import {
     RaisedPageContent,
     Section,
 } from "@components/Layout"
+import {
+    EventsGrid
+} from "@components/Events"
 
 export const query = graphql`
     query EventsPageQuery {
@@ -15,15 +18,12 @@ export const query = graphql`
             header
             subtitle
             image {
-                asset {
-                    gatsbyImageData(
-                        formats: WEBP
-                        placeholder: BLURRED
-                        layout: FULL_WIDTH
-                        fit: CROP
-                    )
-                    altText
-                }
+                ...BackgroundImage
+            }
+        }
+        allSanityEvent {
+            nodes {
+                ...Event
             }
         }
     }
@@ -48,7 +48,7 @@ function EventsPage({ data }: PageProps<GatsbyTypes.EventsPageQuery>) {
             </ParallaxBackground>
             <RaisedPageContent>
                 <Section>
-                    <Typography>Hello what's up</Typography>
+                    <EventsGrid events={data.allSanityEvent.nodes} />
                 </Section>
             </RaisedPageContent>
         </>

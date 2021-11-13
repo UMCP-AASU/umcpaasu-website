@@ -15,15 +15,7 @@ export const query = graphql`
             header
             subtitle
             image {
-                asset {
-                    gatsbyImageData(
-                        formats: WEBP
-                        placeholder: BLURRED
-                        layout: FULL_WIDTH
-                        fit: CROP
-                    )
-                    altText
-                }
+                ...BackgroundImage
             }
         }
     }

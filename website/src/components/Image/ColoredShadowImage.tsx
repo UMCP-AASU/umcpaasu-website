@@ -12,6 +12,7 @@ function ColoredShadowImage({ imageAsset, ...rest }: GatsbyImageIfExistsProps) {
             <GatsbyImageIfExists
                 sx={{
                     borderRadius: 1, // theme.shape.borderRadius * 1
+                    zIndex: 20,
                 }}
                 imageAsset={imageAsset}
                 {...rest}

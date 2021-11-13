@@ -9,15 +9,7 @@ export const query = graphql`
     query NotFoundPageQuery {
         sanityHomePage {
             image {
-                asset {
-                    gatsbyImageData(
-                        formats: WEBP
-                        placeholder: BLURRED
-                        layout: FULL_WIDTH
-                        fit: CROP
-                    )
-                    altText
-                }
+                ...BackgroundImage
             }
         }
     }

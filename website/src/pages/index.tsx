@@ -15,15 +15,7 @@ export const query = graphql`
                 _rawChildren
             }
             image {
-                asset {
-                    gatsbyImageData(
-                        formats: WEBP
-                        placeholder: BLURRED
-                        layout: FULL_WIDTH
-                        fit: CROP
-                    )
-                    altText
-                }
+                ...BackgroundImage
             }
         }
     }
