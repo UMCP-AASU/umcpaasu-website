@@ -19,13 +19,17 @@ export default {
             name: "boardYear",
             title: "Board Year",
             type: "reference",
-            to: [{type: "boardYear"}],
-            validation: Rule => Rule.required(),
+            to: [{ type: "boardYear" }],
+            validation: (Rule) => Rule.required(),
         },
         {
             name: "major",
             title: "Major(s)",
-            type: "tags",
+            type: "array",
+            of: [{ type: "string" }],
+            options: {
+                layout: "tags",
+            },
         },
         {
             name: "propic",
