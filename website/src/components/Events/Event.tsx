@@ -74,7 +74,10 @@ function Event({ event, showDescription = true, preview = false }: Props) {
                     </Typography>
 
                     {showDescription ? (
-                        <SanityContent blocks={_rawDescription.slice(0, 1)} />
+                        <SanityContent
+                            blocks={_rawDescription}
+                            characterLimit={100}
+                        />
                     ) : (
                         <></>
                     )}

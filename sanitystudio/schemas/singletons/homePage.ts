@@ -28,6 +28,18 @@ export default {
             name: 'aboutDescription',
             title: 'About Us Blurb',
             type: 'portableText'
-        }
+        },
+        {
+            name: 'boardSectionImage',
+            title: 'Board Section Background Image',
+            type: 'image',
+            validation: (Rule) => Rule.required(),
+        },
+        {
+            name: 'subscribeSectionImage',
+            title: 'Subscribe Section Background Image',
+            type: 'image',
+            validation: (Rule) => Rule.required(),
+        },
     ],
 }

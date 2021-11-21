@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Typography } from "@mui/material"
+import { Grid, Typography, useMediaQuery } from "@mui/material"
 
 // Components
 import { SanityContent } from "@components/SanityContent"
@@ -33,9 +33,14 @@ function BioPreview({ bio }: Props) {
                     <Typography variant="h6" color="white">
                         {name}
                     </Typography>
-                    <Typography variant="subtitle1">{position}</Typography>
+                    <Typography variant="subtitle1" color="lightgrey">
+                        {position}
+                    </Typography>
 
-                    <SanityContent blocks={_rawDescription} />
+                    <SanityContent
+                        blocks={_rawDescription}
+                        characterLimit={125}
+                    />
                 </Grid>
             </Grid>
         </Grid>

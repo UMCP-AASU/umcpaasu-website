@@ -27,13 +27,26 @@ export const query = graphql`
             image {
                 ...BackgroundImage
             }
+            boardSectionImage {
+                ...BackgroundImage
+            }
+            subscribeSectionImage {
+                ...BackgroundImage
+            }
         }
-        events: allSanityEvent {
+        events: allSanityEvent(
+            limit: 3
+            sort: { fields: datetime, order: DESC }
+        ) {
             nodes {
                 ...Event
             }
         }
-        presidents: allSanityBio(filter: { position: { eq: "Co-President" } }) {
+        presidents: allSanityBio(
+            filter: { position: { eq: "Co-President" } }
+            limit: 2
+            sort: { fields: boardYear___year, order: DESC }
+        ) {
             nodes {
                 ...Bio
             }
@@ -101,7 +114,7 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                     </AnimatedButton>
                 </Section>
                 <BackgroundImage
-                    imageAsset={sanityHomePage?.image}
+                    imageAsset={sanityHomePage?.boardSectionImage}
                     imageHeight="auto"
                 >
                     <Section
@@ -117,12 +130,20 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                             Meet our co-presidents!
                         </Typography>
                     </Section>
-                    <Section>
+                    <Section
+                        sx={{
+                            color: "white"
+                        }}
+                    >
                         <GridWithItems
                             alignItems="stretch"
                             spacing={3}
                             xs={12}
+                            sm={false}
                             lg={6}
+                            sx={{
+                                padding: 2,
+                            }}
                         >
                             {presidents.nodes.map((bio) => (
                                 <AnimateOnVisible
@@ -152,7 +173,10 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                         </AnimatedButton>
                     </Section>
                 </BackgroundImage>
-                <BackgroundImage imageAsset={sanityHomePage?.image} imageHeight="auto">
+                <BackgroundImage
+                    imageAsset={sanityHomePage?.subscribeSectionImage}
+                    imageHeight="auto"
+                >
                     <Section
                         title="Subscribe to our Newsletter"
                         variant="h5"

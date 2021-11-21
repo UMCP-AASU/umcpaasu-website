@@ -80,14 +80,60 @@ const serializers = {
     },
 }
 
-type Props = Omit<BlockContentProps, "blocks"> & {
-    blocks: GatsbyTypes.Maybe<
-        readonly GatsbyTypes.Maybe<GatsbyTypes.SanityBlock>[]
-    >
+type Blocks = GatsbyTypes.Maybe<
+    readonly GatsbyTypes.Maybe<GatsbyTypes.SanityBlock>[]
+>
+
+const limitBlockContent = (blocks: Blocks, characterLimit?: number): Blocks => {
+    if (!blocks || !blocks[0] || !characterLimit) return blocks
+
+    console.log("Limiting...")
+
+    const { children, ...blocksRest } = blocks[0] as GatsbyTypes.SanityBlock
+    let newBlocksChildren = []
+    let charLeft = characterLimit
+    let blockLimit = 0
+    while (charLeft > 0 && blockLimit < children.length) {
+        const { text, ...rest } = (children as GatsbyTypes.SanitySpan[])[
+            blockLimit
+        ]
+        const textLength = (text as String).length
+        console.log("Text Length: " + textLength)
+        console.log("Char Left: " + charLeft)
+
+        newBlocksChildren.push({
+            text:
+                charLeft - textLength > 0
+                    ? text
+                    : text?.substring(0, charLeft) + "...",
+            ...rest,
+        })
+        charLeft -= textLength
+        blockLimit++
+    }
+
+    return [
+        {
+            children: newBlocksChildren,
+            ...blocksRest,
+        },
+    ]
 }
 
-const SanityContent = ({ blocks, ...rest }: Props) => (
-    <BlockContent blocks={blocks} serializers={serializers} {...rest} />
-)
+type Props = Omit<BlockContentProps, "blocks"> & {
+    blocks: Blocks
+    characterLimit?: number
+}
+
+const SanityContent = ({ blocks, characterLimit, ...rest }: Props) =>
+    blocks ? (
+        <BlockContent
+            blocks={limitBlockContent(blocks, characterLimit)}
+            serializers={serializers}
+            {...rest}
+        />
+    ) : (
+        <></>
+    )
 
 export default SanityContent
