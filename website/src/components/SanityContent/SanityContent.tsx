@@ -87,8 +87,6 @@ type Blocks = GatsbyTypes.Maybe<
 const limitBlockContent = (blocks: Blocks, characterLimit?: number): Blocks => {
     if (!blocks || !blocks[0] || !characterLimit) return blocks
 
-    console.log("Limiting...")
-
     const { children, ...blocksRest } = blocks[0] as GatsbyTypes.SanityBlock
     let newBlocksChildren = []
     let charLeft = characterLimit
@@ -98,8 +96,6 @@ const limitBlockContent = (blocks: Blocks, characterLimit?: number): Blocks => {
             blockLimit
         ]
         const textLength = (text as String).length
-        console.log("Text Length: " + textLength)
-        console.log("Char Left: " + charLeft)
 
         newBlocksChildren.push({
             text:

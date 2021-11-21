@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
-import { Container, Hidden, Typography } from "@mui/material"
+import { Box, Container, Hidden, Typography } from "@mui/material"
 
 import SEO from "@components/SEO"
 import {
@@ -51,7 +51,14 @@ function BoardPage({ data }: PageProps<GatsbyTypes.BoardPageQuery>) {
             </ParallaxBackground>
             <RaisedPageContent>
                 <Section maxWidth="lg">
-                    <Hidden xsDown>
+                    <Box
+                        sx={{
+                            display: {
+                                xs: "none",
+                                sm: "block",
+                            },
+                        }}
+                    >
                         <Typography
                             variant="subtitle1"
                             color="textSecondary"
@@ -61,7 +68,7 @@ function BoardPage({ data }: PageProps<GatsbyTypes.BoardPageQuery>) {
                             Tip: Learn more about the board by hovering or
                             tapping over their picture!
                         </Typography>
-                    </Hidden>
+                    </Box>
                     <BioGrid bios={data.presidents.nodes} />
                     <BioGrid bios={data.board.nodes} />
                 </Section>

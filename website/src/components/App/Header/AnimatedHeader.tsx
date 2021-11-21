@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { animated, useSpring } from "react-spring"
 import {
+    Box,
     AppBar,
     Container,
     Grid,
@@ -67,13 +68,26 @@ function Header(props: Props) {
                             </InLineLink>
                         </Grid>
                         <Grid item>
-                            <Hidden xsDown>
-                                {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
+                            <Box
+                                sx={{
+                                    display: {
+                                        xs: "none",
+                                        sm: "block",
+                                    },
+                                }}
+                            >
                                 <HeaderLinks scrollTrigger={scrollTrigger} />
-                            </Hidden>
-                            <Hidden smUp>
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: {
+                                        xs: "block",
+                                        sm: "none",
+                                    },
+                                }}
+                            >
                                 <HeaderMenu scrollTrigger={scrollTrigger} />
-                            </Hidden>
+                            </Box>
                         </Grid>
                     </Grid>
                     {/* This is here to make sure everything else is right-aligned*/}

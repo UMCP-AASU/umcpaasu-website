@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import { Box, Theme, Hidden, useTheme, styled } from "@mui/material"
+import { Box, useTheme, styled } from "@mui/material"
 import { animated, useTransition } from "react-spring"
 
 const UnderlinedLink = styled(Link)(({ theme }) => ({
@@ -58,7 +58,14 @@ function HeaderLink(props: Props) {
             onMouseLeave={() => setShow(false)}
         >
             <b>{text}</b>
-            <Hidden xsDown>
+            <Box
+                sx={{
+                    display: {
+                        xs: "none",
+                        sm: "block",
+                    },
+                }}
+            >
                 {transition(
                     (styles, item) =>
                         item && (
@@ -76,7 +83,7 @@ function HeaderLink(props: Props) {
                         )
                 )}
                 <div id="link-highlight" />
-            </Hidden>
+            </Box>
         </UnderlinedLink>
     )
 }
