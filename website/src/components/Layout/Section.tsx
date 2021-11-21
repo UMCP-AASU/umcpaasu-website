@@ -9,28 +9,29 @@ import {
 import { animated } from "react-spring"
 
 type Props = TypographyProps & {
-    maxWidth?: ContainerProps["maxWidth"]
+    maxWidth?: ContainerProps["maxWidth"],
+    sx?: ContainerProps["sx"],
     title?: string
     children: React.ReactNode
 }
 
 function Section({
-    classes,
     maxWidth = "md",
     title,
     color = "textSecondary",
     variant = "h3",
     align = "center",
+    sx = {
+        paddingTop: 8, // theme.spacing(8)
+        paddingBottom: 4, // theme.spacing(4)
+    },
     children,
     ...rest
 }: Props) {
     return (
         <Container
             maxWidth={maxWidth}
-            sx={{
-                paddingTop: 8, // theme.spacing(8)
-                paddingBottom: 4, // theme.spacing(4)
-            }}
+            sx={sx}
         >
             <Grid
                 container

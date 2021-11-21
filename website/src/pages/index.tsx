@@ -14,6 +14,8 @@ import { EventsGrid } from "@components/Events"
 import { BioPreview } from "@components/Bio"
 import { AnimatedButton } from "@components/Button"
 import { BackgroundImage } from "@components/Image"
+import SanityContent from "@components/SanityContent"
+import Newsletter from "@components/Newsletter"
 
 export const query = graphql`
     query HomePage {
@@ -21,9 +23,7 @@ export const query = graphql`
             header
             subtitle
             aboutTitle
-            aboutDescription {
-                _rawChildren
-            }
+            _rawAboutDescription
             image {
                 ...BackgroundImage
             }
@@ -42,11 +42,12 @@ export const query = graphql`
 `
 
 function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
+    const { sanityHomePage, events, presidents } = data
     return (
         <>
             <SEO title={"Home"} />
             <ParallaxBackground
-                imageAsset={data.sanityHomePage?.image}
+                imageAsset={sanityHomePage?.image}
                 imageHeight="100vh"
             >
                 <Container
@@ -62,17 +63,17 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                         University of Maryland College Park
                     </Typography>
                     <Typography variant="h3" color="white">
-                        {data.sanityHomePage?.header}
+                        {sanityHomePage?.header}
                     </Typography>
                     <Typography variant="subtitle1" color="white">
-                        {data.sanityHomePage?.subtitle}
+                        {sanityHomePage?.subtitle}
                     </Typography>
                     <AnimatedButton
                         to="events"
                         variant="contained"
                         color="primary"
                         boopProps={{
-                            scale: 0.05,
+                            scale: 1.05,
                         }}
                     >
                         Upcoming Events
@@ -80,11 +81,13 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                 </Container>
             </ParallaxBackground>
             <RaisedPageContent>
-                <Section title={data.sanityHomePage?.aboutTitle}>
-                    <Typography>Hello what's up</Typography>
+                <Section title={sanityHomePage?.aboutTitle}>
+                    <SanityContent
+                        blocks={sanityHomePage?._rawAboutDescription}
+                    />
                 </Section>
                 <Section title="Events" maxWidth="lg">
-                    <EventsGrid events={data.events.nodes} />
+                    <EventsGrid events={events.nodes} />
 
                     <AnimatedButton
                         to="events"
@@ -98,13 +101,14 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                     </AnimatedButton>
                 </Section>
                 <BackgroundImage
-                    imageAsset={data.sanityHomePage?.image}
+                    imageAsset={sanityHomePage?.image}
                     imageHeight="auto"
                 >
-                    <Section>
-                        <Typography variant="h4" color="white" align="center">
-                            Want to see who makes it all happen?
-                        </Typography>
+                    <Section
+                        title="Want to see who makes it all happen?"
+                        variant="h4"
+                        color="white"
+                    >
                         <Typography
                             variant="subtitle1"
                             color="white"
@@ -120,7 +124,7 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                             xs={12}
                             lg={6}
                         >
-                            {data.presidents.nodes.map((bio) => (
+                            {presidents.nodes.map((bio) => (
                                 <AnimateOnVisible
                                     once
                                     partialVisibility
@@ -131,12 +135,11 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                             ))}
                         </GridWithItems>
                     </Section>
-                    <Section>
-                        <Typography variant="h5" color="white" align="center" sx={{
-                            paddingBottom: 2, // theme.spacing(2)
-                        }}>
-                            Check out the others
-                        </Typography>
+                    <Section
+                        title="Check out the others"
+                        variant="h5"
+                        color="white"
+                    >
                         <AnimatedButton
                             to="board"
                             variant="contained"
@@ -147,6 +150,18 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                         >
                             Board
                         </AnimatedButton>
+                    </Section>
+                </BackgroundImage>
+                <BackgroundImage imageAsset={sanityHomePage?.image} imageHeight="auto">
+                    <Section
+                        title="Subscribe to our Newsletter"
+                        variant="h5"
+                        color="white"
+                        sx={{
+                            padding: 10, // theme.spacing(10)
+                        }}
+                    >
+                        <Newsletter />
                     </Section>
                 </BackgroundImage>
             </RaisedPageContent>
