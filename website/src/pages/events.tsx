@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 import { Container, Typography } from "@mui/material"
+import { parse, isBefore, isAfter } from "date-fns"
 
 import SEO from "@components/SEO"
 import {
@@ -29,13 +30,23 @@ export const query = graphql`
         }
     }
 `
+const dateFormat = "MMM d, yyyy"
 
 function EventsPage({ data }: PageProps<GatsbyTypes.EventsPageQuery>) {
     const { sanityEventsPage, allSanityEvent } = data
     const [boardYear, setBoardYear] = useBoardYear()
     const allEvents = allSanityEvent.nodes
-    const futureEvents = allEvents
-    const pastEvents = allEvents
+    const currentDate = new Date()
+    const futureEvents = allEvents.filter(
+        (event) =>
+            event.boardYear.year == boardYear &&
+            isAfter(parse(event.datetime, dateFormat, new Date()), currentDate)
+    )
+    const pastEvents = allEvents.filter(
+        (event) =>
+            event.boardYear.year == boardYear &&
+            isBefore(parse(event.datetime, dateFormat, new Date()), currentDate)
+    )
     return (
         <>
             <SEO title={"Events"} />
@@ -53,16 +64,35 @@ function EventsPage({ data }: PageProps<GatsbyTypes.EventsPageQuery>) {
                 </Container>
             </ParallaxBackground>
             <RaisedPageContent>
-                <BoardYearSelect
-                    boardYear={boardYear}
-                    setBoardYear={setBoardYear}
-                />
-                <Section title="Upcoming Events" maxWidth="lg">
-                    <EventsGrid events={futureEvents} />
+                <Section
+                    sx={{
+                        paddingTop: 5, // theme.spacing(0)
+                    }}
+                >
+                    <BoardYearSelect
+                        boardYear={boardYear}
+                        setBoardYear={setBoardYear}
+                    />
                 </Section>
-                <Section title="Past Events" maxWidth="lg">
-                    <EventsGrid events={pastEvents} />
-                </Section>
+
+                {futureEvents.length > 0 ? (
+                    <Section title="Upcoming Events" maxWidth="lg" sx={{
+                        padding: 3,
+                    }}>
+                        <EventsGrid events={futureEvents} />
+                    </Section>
+                ) : (
+                    <></>
+                )}
+                {pastEvents.length > 0 ? (
+                    <Section title="Past Events" maxWidth="lg" sx={{
+                        padding: 3
+                    }}>
+                        <EventsGrid events={pastEvents} />
+                    </Section>
+                ) : (
+                    <></>
+                )}
             </RaisedPageContent>
         </>
     )

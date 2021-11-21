@@ -19,7 +19,6 @@ function Event({ event, showDescription = true, preview = false }: Props) {
     const {
         title,
         datetime,
-        boardYear,
         facebookLink,
         tags = [],
         image,

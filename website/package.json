@@ -21,6 +21,7 @@
     "@mui/icons-material": "^5.1.0",
     "@mui/material": "^5.0.6",
     "@sanity/block-content-to-react": "^3.0.0",
+    "date-fns": "^2.26.0",
     "gatsby": "^4.1.0",
     "gatsby-background-image": "^1.5.3",
     "gatsby-plugin-gatsby-cloud": "^4.1.0",
