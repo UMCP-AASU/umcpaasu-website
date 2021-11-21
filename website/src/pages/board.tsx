@@ -1,6 +1,10 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
-import { Box, Container, Hidden, Typography } from "@mui/material"
+import {
+    Box,
+    Container,
+    Typography,
+} from "@mui/material"
 
 import SEO from "@components/SEO"
 import {
@@ -9,6 +13,8 @@ import {
     Section,
 } from "@components/Layout"
 import { BioGrid } from "@components/Bio"
+import { BoardYearSelect } from "@components/BoardYear"
+import useBoardYear from "@hooks/useBoardYear"
 
 export const query = graphql`
     query BoardPageQuery {
@@ -19,12 +25,18 @@ export const query = graphql`
                 ...BackgroundImage
             }
         }
-        presidents: allSanityBio(filter: { position: { eq: "Co-President" } }) {
+        presidents: allSanityBio(
+            filter: { position: { eq: "Co-President" } }
+            sort: { fields: order, order: ASC }
+        ) {
             nodes {
                 ...Bio
             }
         }
-        board: allSanityBio(filter: { position: { ne: "Co-President" } }) {
+        board: allSanityBio(
+            filter: { position: { ne: "Co-President" } }
+            sort: { fields: order, order: ASC }
+        ) {
             nodes {
                 ...Bio
             }
@@ -33,24 +45,51 @@ export const query = graphql`
 `
 
 function BoardPage({ data }: PageProps<GatsbyTypes.BoardPageQuery>) {
+    const {
+        sanitySiteSettings,
+        allSanityBoardYear,
+        sanityBoardPage,
+        presidents,
+        board,
+    } = data
+
+    const [boardYear, setBoardYear] = useBoardYear()
+    const presidentsBios = presidents.nodes.filter(
+        (bio: GatsbyTypes.BioFragment) => bio.boardYear?.year == boardYear
+    )
+    const boardBios = board.nodes.filter(
+        (bio: GatsbyTypes.BioFragment) => bio.boardYear?.year == boardYear
+    )
+
     return (
         <>
             <SEO title={"Board"} />
             <ParallaxBackground
-                imageAsset={data.sanityBoardPage?.image}
+                imageAsset={sanityBoardPage?.image}
                 imageHeight="65vh"
             >
                 <Container maxWidth="lg">
                     <Typography variant="h3" color="white">
-                        {data.sanityBoardPage?.header}
+                        {sanityBoardPage?.header}
                     </Typography>
                     <Typography variant="subtitle1" color="white">
-                        {data.sanityBoardPage?.subtitle}
+                        {sanityBoardPage?.subtitle}
                     </Typography>
                 </Container>
             </ParallaxBackground>
             <RaisedPageContent>
-                <Section maxWidth="lg">
+                <Section
+                    maxWidth="lg"
+                    sx={{
+                        paddingTop: 5, // theme.spacing(0)
+                        paddingBottom: 3, // theme.spacing(3)
+                    }}
+                >
+                    <BoardYearSelect
+                        boardYear={boardYear}
+                        setBoardYear={setBoardYear}
+                    />
+
                     <Box
                         sx={{
                             display: {
@@ -69,8 +108,8 @@ function BoardPage({ data }: PageProps<GatsbyTypes.BoardPageQuery>) {
                             tapping over their picture!
                         </Typography>
                     </Box>
-                    <BioGrid bios={data.presidents.nodes} />
-                    <BioGrid bios={data.board.nodes} />
+                    <BioGrid bios={presidentsBios} />
+                    <BioGrid bios={boardBios} />
                 </Section>
             </RaisedPageContent>
         </>

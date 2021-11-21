@@ -13,7 +13,10 @@ function BioGrid(props: Props) {
     const { classes, bios, ...rest } = props
     const matches = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"))
     return (
-        <GridWithItems sm={6} lg={4} {...rest}>
+        <GridWithItems sm={6} lg={4} {...rest} sx={{
+            paddingLeft: 2, // theme.spacing(2)
+            paddingRight: 2, // theme.spacing(2)
+        }}>
             {bios.length <= 0
                 ? [
                       <Typography variant="h5" align="center" key={1}>

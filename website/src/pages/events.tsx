@@ -8,9 +8,10 @@ import {
     RaisedPageContent,
     Section,
 } from "@components/Layout"
-import {
-    EventsGrid
-} from "@components/Events"
+import { EventsGrid } from "@components/Events"
+import { BoardYearSelect } from "@components/BoardYear"
+
+import useBoardYear from "@hooks/useBoardYear"
 
 export const query = graphql`
     query EventsPageQuery {
@@ -30,26 +31,32 @@ export const query = graphql`
 `
 
 function EventsPage({ data }: PageProps<GatsbyTypes.EventsPageQuery>) {
-    const allEvents = data.allSanityEvent.nodes
+    const { sanityEventsPage, allSanityEvent } = data
+    const [boardYear, setBoardYear] = useBoardYear()
+    const allEvents = allSanityEvent.nodes
     const futureEvents = allEvents
     const pastEvents = allEvents
     return (
         <>
             <SEO title={"Events"} />
             <ParallaxBackground
-                imageAsset={data.sanityEventsPage?.image}
+                imageAsset={sanityEventsPage?.image}
                 imageHeight="65vh"
             >
                 <Container maxWidth="lg">
                     <Typography variant="h3" color="white">
-                        {data.sanityEventsPage?.header}
+                        {sanityEventsPage?.header}
                     </Typography>
                     <Typography variant="subtitle1" color="white">
-                        {data.sanityEventsPage?.subtitle}
+                        {sanityEventsPage?.subtitle}
                     </Typography>
                 </Container>
             </ParallaxBackground>
             <RaisedPageContent>
+                <BoardYearSelect
+                    boardYear={boardYear}
+                    setBoardYear={setBoardYear}
+                />
                 <Section title="Upcoming Events" maxWidth="lg">
                     <EventsGrid events={futureEvents} />
                 </Section>
