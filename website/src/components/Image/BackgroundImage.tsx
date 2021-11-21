@@ -5,13 +5,10 @@ import { SanityImageWithAltText } from "./index"
 import { GatsbyImageProps } from "gatsby-plugin-image"
 
 const StyledBackgroundImage = styled(BgImage)({
-    overflow: "hidden",
     position: "relative",
     backgroundPosition: "center center",
     backgroundSize: "cover",
-    margin: "0",
-    padding: "0",
-    border: "0",
+    width: "100%",
 })
 
 export type BackgroundImageProps = Omit<GatsbyImageProps, "image" | "alt"> & {
@@ -27,7 +24,7 @@ function BackgroundImage({
     ...rest
 }: BackgroundImageProps) {
     if (!imageAsset || !imageAsset?.asset?.gatsbyImageData) {
-        console.log("unavailable")
+        console.log("Background unavailable")
         return <Box>{children}</Box>
     }
 
@@ -54,9 +51,6 @@ function BackgroundImage({
                 sx={{
                     width: "100%",
                     height: "100%",
-                    position: "absolute",
-                    background: "rgba(0, 0, 0, 0.5)",
-                    zIndex: -1,
                 }}
             >
                 {children}

@@ -13,6 +13,7 @@ import {
 import { EventsGrid } from "@components/Events"
 import { BioPreview } from "@components/Bio"
 import { AnimatedButton } from "@components/Button"
+import { BackgroundImage } from "@components/Image"
 
 export const query = graphql`
     query HomePage {
@@ -90,43 +91,64 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                         variant="contained"
                         color="primary"
                         boopProps={{
-                            scale: 0.05,
+                            scale: 1.05,
                         }}
                     >
                         Upcoming and Past Events
                     </AnimatedButton>
                 </Section>
-                <Section>
-                    <Typography variant="h4" color="white" align="center">
-                        Want to see who makes it all happen?
-                    </Typography>
-                    <Typography
-                        variant="subtitle1"
-                        color="white"
-                        align="center"
-                    >
-                        Meet our co-presidents!
-                    </Typography>
-                    <GridWithItems
-                        alignItems="stretch"
-                        spacing={3}
-                        xs={12}
-                        lg={6}
-                    >
-                        {data.presidents.nodes.map((bio) => (
-                            <AnimateOnVisible
-                                once
-                                partialVisibility
-                                key={bio._id}
-                            >
-                                <BioPreview bio={bio} />
-                            </AnimateOnVisible>
-                        ))}
-                    </GridWithItems>
-                </Section>
-                <Section title={data.sanityHomePage?.aboutTitle}>
-                    <Typography>Hello what's up</Typography>
-                </Section>
+                <BackgroundImage
+                    imageAsset={data.sanityHomePage?.image}
+                    imageHeight="auto"
+                >
+                    <Section>
+                        <Typography variant="h4" color="white" align="center">
+                            Want to see who makes it all happen?
+                        </Typography>
+                        <Typography
+                            variant="subtitle1"
+                            color="white"
+                            align="center"
+                        >
+                            Meet our co-presidents!
+                        </Typography>
+                    </Section>
+                    <Section>
+                        <GridWithItems
+                            alignItems="stretch"
+                            spacing={3}
+                            xs={12}
+                            lg={6}
+                        >
+                            {data.presidents.nodes.map((bio) => (
+                                <AnimateOnVisible
+                                    once
+                                    partialVisibility
+                                    key={bio._id}
+                                >
+                                    <BioPreview bio={bio} />
+                                </AnimateOnVisible>
+                            ))}
+                        </GridWithItems>
+                    </Section>
+                    <Section>
+                        <Typography variant="h5" color="white" align="center" sx={{
+                            paddingBottom: 2, // theme.spacing(2)
+                        }}>
+                            Check out the others
+                        </Typography>
+                        <AnimatedButton
+                            to="board"
+                            variant="contained"
+                            color="primary"
+                            boopProps={{
+                                scale: 1.05,
+                            }}
+                        >
+                            Board
+                        </AnimatedButton>
+                    </Section>
+                </BackgroundImage>
             </RaisedPageContent>
         </>
     )

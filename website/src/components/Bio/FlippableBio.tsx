@@ -58,7 +58,7 @@ function FlippableBio({ bio }: Props) {
                     }}
                     style={{
                         opacity,
-                        transform: transform.interpolate(
+                        transform: transform.to(
                             (t) => `${t} rotateY(180deg)`
                         ),
                     }}

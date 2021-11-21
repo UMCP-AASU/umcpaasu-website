@@ -19,7 +19,6 @@ type Props = {
 
 function Bio({ bio }: Props) {
     const { name, position, major = [], propic, _rawDescription } = bio
-
     return (
         <Card>
             <Box>
@@ -29,7 +28,7 @@ function Bio({ bio }: Props) {
                         {name}
                     </Typography>
                     <Typography variant="subtitle1">{position}</Typography>
-                    <SanityContent content={_rawDescription} />
+                    <SanityContent blocks={_rawDescription} />
                 </CardContent>
             </Box>
             <CardActions>
