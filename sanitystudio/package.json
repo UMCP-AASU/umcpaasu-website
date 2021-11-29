@@ -20,7 +20,7 @@
     "@sanity/core": "^2.21.8",
     "@sanity/default-layout": "^2.21.9",
     "@sanity/default-login": "^2.21.9",
-    "@sanity/desk-tool": "2.21.10",
+    "@sanity/desk-tool": "2.22.2",
     "@sanity/types": "^2.21.7",
     "@sanity/vision": "^2.21.9",
     "moment": "^2.29.1",
