@@ -19,5 +19,11 @@ export default {
             type: 'image',
             validation: (Rule) => Rule.required(),
         },
+        {
+            name: 'content',
+            title: 'Page Content',
+            type: 'array',
+            of: [{ type: 'section' }],
+        }
     ],
 }

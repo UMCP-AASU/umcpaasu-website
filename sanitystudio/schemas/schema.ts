@@ -19,6 +19,8 @@ import boardYear from "./documents/boardYear"
 
 // Import the object schemas
 import portableText from "./objects/portableText"
+import section from "./objects/section"
+import buttonLink from "./objects/buttonLink"
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -36,6 +38,10 @@ export default createSchema({
         bio,
         event,
         boardYear,
+
+        // Objects
         portableText,
+        section,
+        buttonLink
     ]),
 })
