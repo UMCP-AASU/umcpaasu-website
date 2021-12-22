@@ -23,6 +23,19 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
+            name: "propic",
+            title: "Profile Picture",
+            type: "image",
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: "isImageBio",
+            title: "Is Image Bio",
+            description: "Whether the information for the bio is all in the image provided",
+            type: "boolean",
+            default: false,
+        },
+        {
             name: "major",
             title: "Major(s)",
             type: "array",
@@ -30,17 +43,14 @@ export default {
             options: {
                 layout: "tags",
             },
-        },
-        {
-            name: "propic",
-            title: "Profile Picture",
-            type: "image",
+            hidden: ({ parent }) => parent?.isImageBio,
         },
         {
             // see https://www.sanity.io/docs/block-type
             name: "description",
             title: "Description",
             type: "portableText",
+            hidden: ({ parent }) => parent?.isImageBio,
         },
         {
             name: "order",
