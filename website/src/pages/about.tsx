@@ -8,6 +8,7 @@ import {
     RaisedPageContent,
     Section,
 } from "@components/Layout"
+import { SanityPageContent } from "@components/SanityContent"
 
 export const query = graphql`
     query AboutPageQuery {
@@ -16,6 +17,9 @@ export const query = graphql`
             subtitle
             image {
                 ...BackgroundImage
+            }
+            content {
+                ...PageContent
             }
         }
     }
@@ -39,9 +43,7 @@ function AboutPage({ data }: PageProps<GatsbyTypes.AboutPageQuery>) {
                 </Container>
             </ParallaxBackground>
             <RaisedPageContent>
-                <Section>
-                    <Typography>Hello what's up</Typography>
-                </Section>
+                <SanityPageContent content={data.sanityAboutPage?.content} />
             </RaisedPageContent>
         </>
     )

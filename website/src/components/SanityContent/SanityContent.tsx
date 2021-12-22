@@ -1,6 +1,6 @@
 import React from "react"
 import BlockContent, { BlockContentProps } from "@sanity/block-content-to-react"
-import { Typography, TypographyVariant } from "@mui/material"
+import { Box, Typography, TypographyVariant, SxProps } from "@mui/material"
 
 type TypeNode = {
     children: React.ReactNode
@@ -119,15 +119,19 @@ const limitBlockContent = (blocks: Blocks, characterLimit?: number): Blocks => {
 type Props = Omit<BlockContentProps, "blocks"> & {
     blocks: Blocks
     characterLimit?: number
+    sx?: SxProps
 }
 
-const SanityContent = ({ blocks, characterLimit, ...rest }: Props) =>
+const SanityContent = ({ blocks, characterLimit, sx, ...rest }: Props) =>
     blocks ? (
-        <BlockContent
-            blocks={limitBlockContent(blocks, characterLimit)}
-            serializers={serializers}
-            {...rest}
-        />
+        <Box sx={sx}>
+            <BlockContent
+                blocks={limitBlockContent(blocks, characterLimit)}
+                serializers={serializers}
+                sx={sx}
+                {...rest}
+            />
+        </Box>
     ) : (
         <></>
     )

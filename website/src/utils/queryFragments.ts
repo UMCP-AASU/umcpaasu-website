@@ -69,3 +69,23 @@ export const bioFragment = graphql`
         order
     }
 `
+
+export const contentFragment = graphql`
+    fragment PageContent on SanitySection {
+        _key
+        title
+        isImageSection
+        backgroundImage {
+          ...BackgroundImage
+        }
+        _rawBody
+        button {
+          href
+          title
+        }
+        images {
+          _key
+          ...FluidImage
+        }
+    }
+`
