@@ -72,13 +72,13 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                         },
                     }}
                 >
-                    <Typography variant="h3" color="white">
+                    <Typography variant="h3" color="white" sx={{padding: 1}}>
                         University of Maryland College Park
                     </Typography>
-                    <Typography variant="h3" color="white">
+                    <Typography variant="h3" color="white" sx={{padding: 1}}>
                         {sanityHomePage?.header}
                     </Typography>
-                    <Typography variant="subtitle1" color="white">
+                    <Typography variant="subtitle1" color="white" sx={{padding: 1}}>
                         {sanityHomePage?.subtitle}
                     </Typography>
                     <AnimatedButton

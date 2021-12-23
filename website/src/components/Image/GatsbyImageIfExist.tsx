@@ -33,5 +33,5 @@ const GatsbyImageIfExists = ({
 export default styled(GatsbyImageIfExists)({})
 export const RaisedImage = styled(GatsbyImageIfExists)(({ theme }) => ({
     borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[3],
+    boxShadow: theme.shadows[6],
 }))

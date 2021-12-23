@@ -24,7 +24,7 @@ function BioGrid(props: Props) {
                       </Typography>,
                   ]
                 : bios.map((bio) =>
-                      matches ? (
+                      matches && !bio.isImageBio ? (
                           <FlippableBio bio={bio} key={bio._id} />
                       ) : (
                           <Bio bio={bio} key={bio._id} />

@@ -44,10 +44,25 @@ export const query = graphql`
     }
 `
 
+const hasNonImageBio = (bios: GatsbyTypes.BioFragment[]) => {
+    let i = 0;
+    let isImageBio = true
+
+    /*  There was no need for this to be in one line, but I thought it was just cool how this worked
+        Basically it's as if this was in the body:
+            isImageBio = bios[i].isImageBio == true
+            i++
+
+        !bios[i].isImageBio = true when isImageBio is null or false
+        Adding another ! in front of that negates that so we only get true when isImageBio was true.
+        Completely unnecessary, but cool
+    */
+    while((isImageBio = !!bios[i++].isImageBio) && i < bios.length) {}
+    return !isImageBio
+}
+
 function BoardPage({ data }: PageProps<GatsbyTypes.BoardPageQuery>) {
     const {
-        sanitySiteSettings,
-        allSanityBoardYear,
         sanityBoardPage,
         presidents,
         board,
@@ -60,6 +75,8 @@ function BoardPage({ data }: PageProps<GatsbyTypes.BoardPageQuery>) {
     const boardBios = board.nodes.filter(
         (bio: GatsbyTypes.BioFragment) => bio.boardYear?.year == boardYear
     )
+
+    const isNonImageBio = hasNonImageBio(presidentsBios.concat(boardBios))
 
     return (
         <>
@@ -94,7 +111,7 @@ function BoardPage({ data }: PageProps<GatsbyTypes.BoardPageQuery>) {
                         sx={{
                             display: {
                                 xs: "none",
-                                sm: "block",
+                                sm: isNonImageBio ? "block" : "none",
                             },
                         }}
                     >

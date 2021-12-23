@@ -34,7 +34,7 @@ function BoardYearSelect({ boardYear, setBoardYear }: Props) {
                 }}
             >
                 {allSanityBoardYear.nodes.map((boardYear) => (
-                    <MenuItem value={boardYear.year}>{boardYear.year}</MenuItem>
+                    <MenuItem value={boardYear.year} key={boardYear.year}>{boardYear.year}</MenuItem>
                 ))}
             </Select>
         </FormControl>

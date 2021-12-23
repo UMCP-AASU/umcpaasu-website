@@ -61,10 +61,11 @@ export const bioFragment = graphql`
             year
             _id
         }
-        major
         propic {
             ...FluidImage
         }
+        isImageBio
+        major
         _rawDescription
         order
     }

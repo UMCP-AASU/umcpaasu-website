@@ -9,8 +9,8 @@ type Props = {
     bio: GatsbyTypes.BioFragment
 }
 
-function BioPreview({ bio }: Props) {
-    const { name, position, propic, _rawDescription } = bio
+export default function BioPreview({ bio }: Props) {
+    const { name, position, propic, isImageBio, _rawDescription } = bio
 
     return (
         <Grid
@@ -19,32 +19,34 @@ function BioPreview({ bio }: Props) {
             justifyContent="center"
             spacing={3}
         >
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={isImageBio ? false : 6}>
                 <RaisedImage imageAsset={propic} />
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <Grid
-                    container
-                    direction="column"
-                    sx={{
-                        marginTop: 1, // theme.spacing(1)
-                    }}
-                >
-                    <Typography variant="h6" color="white">
-                        {name}
-                    </Typography>
-                    <Typography variant="subtitle1" color="lightgrey">
-                        {position}
-                    </Typography>
+            {isImageBio ? (
+                <></>
+            ) : (
+                <Grid item xs={12} sm={6}>
+                    <Grid
+                        container
+                        direction="column"
+                        sx={{
+                            marginTop: 1, // theme.spacing(1)
+                        }}
+                    >
+                        <Typography variant="h6" color="white">
+                            {name}
+                        </Typography>
+                        <Typography variant="subtitle1" color="lightgrey">
+                            {position}
+                        </Typography>
 
-                    <SanityContent
-                        blocks={_rawDescription}
-                        characterLimit={125}
-                    />
+                        <SanityContent
+                            blocks={_rawDescription}
+                            characterLimit={125}
+                        />
+                    </Grid>
                 </Grid>
-            </Grid>
+            )}
         </Grid>
     )
 }
-
-export default BioPreview
