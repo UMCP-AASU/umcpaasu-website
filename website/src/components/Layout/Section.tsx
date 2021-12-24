@@ -6,7 +6,6 @@ import {
     Typography,
     TypographyProps,
 } from "@mui/material"
-import { animated } from "react-spring"
 
 type Props = TypographyProps & {
     maxWidth?: ContainerProps["maxWidth"],
@@ -22,7 +21,7 @@ function Section({
     variant = "h3",
     align = "center",
     sx = {
-        paddingTop: 8, // theme.spacing(8)
+        paddingTop: 4, // theme.spacing(8)
         paddingBottom: 4, // theme.spacing(4)
     },
     children,
@@ -38,7 +37,6 @@ function Section({
                 alignItems="center"
                 justifyContent="center"
                 direction="column"
-                spacing={3}
             >
                 {title ? (
                     <Typography

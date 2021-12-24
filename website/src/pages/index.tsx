@@ -66,19 +66,24 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                 <Container
                     maxWidth="lg"
                     sx={{
-                        textAlign: "left",
+                        padding: 1,
+                        textAlign: {
+                            xs: "center",
+                            sm: "left"
+                        },
                         "& > *": {
-                            margin: 2, // theme.spacing(2)
+                            padding: 1,
+                            margin: 1, // theme.spacing(2)
                         },
                     }}
                 >
-                    <Typography variant="h3" color="white" sx={{padding: 1}}>
+                    <Typography variant="h3" color="white">
                         University of Maryland College Park
                     </Typography>
-                    <Typography variant="h3" color="white" sx={{padding: 1}}>
+                    <Typography variant="h3" color="white">
                         {sanityHomePage?.header}
                     </Typography>
-                    <Typography variant="subtitle1" color="white" sx={{padding: 1}}>
+                    <Typography variant="subtitle1" color="white">
                         {sanityHomePage?.subtitle}
                     </Typography>
                     <AnimatedButton
@@ -87,6 +92,9 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                         color="primary"
                         boopProps={{
                             scale: 1.05,
+                        }}
+                        sx={{
+                            marginTop: 2
                         }}
                     >
                         Upcoming Events

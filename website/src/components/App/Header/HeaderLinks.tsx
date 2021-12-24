@@ -30,6 +30,11 @@ function HeaderLinks(props: Props) {
                 text="Board"
                 scrollTrigger={scrollTrigger}
             />
+            <HeaderLink
+                to="/task-force"
+                text="Task Force"
+                scrollTrigger={scrollTrigger}
+            />
         </>
     )
 }
