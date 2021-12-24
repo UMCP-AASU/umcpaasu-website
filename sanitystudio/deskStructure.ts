@@ -50,6 +50,12 @@ export default () =>
                                     // Create a document with the ID siteSettings
                                     .documentId("contactPage")
                             ),
+                            S.listItem().title("Task Force Page").child(
+                                S.document()
+                                    .schemaType("taskForcePage")
+                                    // Create a document with the ID siteSettings
+                                    .documentId("taskForcePage")
+                            ),
                         ])
                 ),
             S.listItem()
@@ -95,6 +101,7 @@ export default () =>
                         "eventsPage",
                         "boardPage",
                         "contactPage",
+                        "taskForcePage",
                         "boardYear",
                         "media.tag",
                         "event",

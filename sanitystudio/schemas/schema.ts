@@ -11,6 +11,7 @@ import aboutPage from "./singletons/aboutPage"
 import eventsPage from "./singletons/eventsPage"
 import boardPage from "./singletons/boardPage"
 import contactPage from "./singletons/contactPage"
+import taskForcePage from "./singletons/taskForcePage"
 
 // Import the document schemas
 import bio from "./documents/bio"
@@ -35,6 +36,7 @@ export default createSchema({
         eventsPage,
         boardPage,
         contactPage,
+        taskForcePage,
         bio,
         event,
         boardYear,
