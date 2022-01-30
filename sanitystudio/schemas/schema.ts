@@ -12,6 +12,7 @@ import eventsPage from "./singletons/eventsPage"
 import boardPage from "./singletons/boardPage"
 import contactPage from "./singletons/contactPage"
 import taskForcePage from "./singletons/taskForcePage"
+import ykLeadershipProgramPage from "./singletons/ykLeadershipProgramPage"
 
 // Import the document schemas
 import bio from "./documents/bio"
@@ -37,6 +38,7 @@ export default createSchema({
         boardPage,
         contactPage,
         taskForcePage,
+        ykLeadershipProgramPage,
         bio,
         event,
         boardYear,

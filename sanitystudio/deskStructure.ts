@@ -23,38 +23,37 @@ export default () =>
                             S.listItem().title("Home Page").child(
                                 S.document()
                                     .schemaType("homePage")
-                                    // Create a document with the ID siteSettings
                                     .documentId("homePage")
                             ),
                             S.listItem().title("About Page").child(
                                 S.document()
                                     .schemaType("aboutPage")
-                                    // Create a document with the ID siteSettings
                                     .documentId("aboutPage")
                             ),
                             S.listItem().title("Events Page").child(
                                 S.document()
                                     .schemaType("eventsPage")
-                                    // Create a document with the ID siteSettings
                                     .documentId("eventsPage")
                             ),
                             S.listItem().title("Board Page").child(
                                 S.document()
                                     .schemaType("boardPage")
-                                    // Create a document with the ID siteSettings
                                     .documentId("boardPage")
                             ),
                             S.listItem().title("Contact Page").child(
                                 S.document()
                                     .schemaType("contactPage")
-                                    // Create a document with the ID siteSettings
                                     .documentId("contactPage")
                             ),
                             S.listItem().title("Task Force Page").child(
                                 S.document()
                                     .schemaType("taskForcePage")
-                                    // Create a document with the ID siteSettings
                                     .documentId("taskForcePage")
+                            ),
+                            S.listItem().title("Yuri Kochiyama Leadership Program Page").child(
+                                S.document()
+                                    .schemaType("ykLeadershipProgramPage")
+                                    .documentId("ykLeadershipProgramPage")
                             ),
                         ])
                 ),
@@ -91,7 +90,7 @@ export default () =>
                                 .params({ boardYear })
                         )
                 ),
-            // The rest of the
+            // The rest of the documents
             ...S.documentTypeListItems().filter(
                 (item) =>
                     ![
@@ -102,6 +101,7 @@ export default () =>
                         "boardPage",
                         "contactPage",
                         "taskForcePage",
+                        "ykLeadershipProgramPage",
                         "boardYear",
                         "media.tag",
                         "event",

@@ -5,7 +5,7 @@ export default {
   fields: [
       {
           name: 'header',
-          title: 'Taks Force Page Header',
+          title: 'Task Force Page Header',
           type: 'string',
       },
       {
