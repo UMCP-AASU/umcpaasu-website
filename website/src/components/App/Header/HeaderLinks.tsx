@@ -35,6 +35,11 @@ function HeaderLinks(props: Props) {
                 text="Task Force"
                 scrollTrigger={scrollTrigger}
             />
+            <HeaderLink
+                to="/yuri-kochiyama-leadership-program"
+                text="YKLP"
+                scrollTrigger={scrollTrigger}
+            />
         </>
     )
 }

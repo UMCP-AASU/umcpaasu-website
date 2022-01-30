@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 // import addToMailchimp from "gatsby-plugin-mailchimp"
 import {
+    Box,
     Button,
     Container,
     ContainerProps,
@@ -79,10 +80,9 @@ function Newsletter(props: Props) {
                     alignContent="center"
                     justifyContent="center"
                 >
-                    <Grid item xs={1}>
-                        <EmailIcon sx={{ marginTop: 1 }} />
-                    </Grid>
-                    <Grid item xs={10} sm={8}>
+                    <Grid item xs={12} sm={8}>
+                        <Box sx={{display: "flex", alignItems: "flex-end"}}>
+                        <EmailIcon sx={{ color: "action.avtive", mr: 1, my: 0.5}} />
                         <TextField
                             required
                             label="Email"
@@ -91,13 +91,8 @@ function Newsletter(props: Props) {
                             value={email}
                             onChange={handleChange}
                             variant="standard"
-                            sx={{
-                                marginBottom: {
-                                    xs: 2, // theme.spacing(2)
-                                    sm: 1, // theme.spacing(1)
-                                },
-                            }}
                         />
+                        </Box>
                     </Grid>
                     <Grid item xs={12} sm={3}>
                         <Button
@@ -106,9 +101,6 @@ function Newsletter(props: Props) {
                             fullWidth
                             variant="contained"
                             color="secondary"
-                            sx={{
-                              height: "100%"
-                            }}
                         >
                             Subscribe
                         </Button>
