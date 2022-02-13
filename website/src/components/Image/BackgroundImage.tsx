@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, styled } from "@mui/material"
+import { Box, styled, SxProps } from "@mui/material"
 import { BgImage } from "gbimage-bridge"
 import { SanityImageWithAltText } from "./index"
 import { GatsbyImageProps } from "gatsby-plugin-image"
@@ -13,13 +13,17 @@ const StyledBackgroundImage = styled(BgImage)({
 
 export type BackgroundImageProps = Omit<GatsbyImageProps, "image" | "alt"> & {
     imageAsset: SanityImageWithAltText
-    imageHeight?: string
+    imageHeight?: string,
+    hasFilter?: boolean,
+    filterProps?: SxProps<Theme>,
     children: React.ReactNode
 }
 
 function BackgroundImage({
     imageAsset,
     imageHeight = "80vh",
+    hasFilter = true,
+    filterProps = {},
     children,
     ...rest
 }: BackgroundImageProps) {
@@ -38,15 +42,20 @@ function BackgroundImage({
             alt={altText}
             {...rest}
         >
-            <Box
-                sx={{
-                    width: "100%",
-                    height: "100%",
-                    position: "absolute",
-                    background: "rgba(0, 0, 0, 0.5)",
-                    zIndex: -1,
-                }}
-            />
+            {hasFilter ? (
+                <Box
+                    sx={{
+                        width: "100%",
+                        height: "100%",
+                        position: "absolute",
+                        background: "rgba(0, 0, 0, 0.5)",
+                        zIndex: -1,
+                        ...filterProps
+                    }}
+                />
+            ) : (
+                <></>
+            )}
             <Box
                 sx={{
                     width: "100%",

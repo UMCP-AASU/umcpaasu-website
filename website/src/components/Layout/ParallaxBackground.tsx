@@ -14,7 +14,7 @@ const AnimatedGrid = animated(Grid)
 
 type Props = BackgroundImageProps
 
-function ParallaxBackground({ imageAsset, imageHeight, children }: Props) {
+function ParallaxBackground({ children, ...rest }: Props) {
     const { transform } = useParallax()
     const springStyle = useSpring({
         from: { opacity: 0, transform: "translate(-30px)" },
@@ -24,8 +24,7 @@ function ParallaxBackground({ imageAsset, imageHeight, children }: Props) {
 
     return (
         <BackgroundImage
-            imageAsset={imageAsset}
-            imageHeight={imageHeight}
+            {...rest}
             style={{transform: transform }}
             loading="eager"       
         >

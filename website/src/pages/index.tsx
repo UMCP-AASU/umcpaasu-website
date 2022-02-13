@@ -62,7 +62,13 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
             <ParallaxBackground
                 imageAsset={sanityHomePage?.image}
                 imageHeight="100vh"
-            >
+                filterProps={{
+                    display: {
+                        xs: "block",
+                        sm: "none",
+                    }
+                }}
+            >       
                 <Container
                     maxWidth="lg"
                     sx={{
@@ -75,6 +81,10 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                             padding: 1,
                             margin: 1, // theme.spacing(2)
                         },
+                        display: {
+                            xs: "block",
+                            sm: "none",
+                        }
                     }}
                 >
                     <Typography variant="h3" color="white">
@@ -99,7 +109,7 @@ function IndexPage({ data }: PageProps<GatsbyTypes.HomePageQuery>) {
                     >
                         Upcoming Events
                     </AnimatedButton>
-                </Container>
+                </Container> 
             </ParallaxBackground>
             <RaisedPageContent>
                 <Section title={sanityHomePage?.aboutTitle}>
